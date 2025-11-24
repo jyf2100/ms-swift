@@ -1,0 +1,577 @@
+/* Custom CSS for SWIFT UI based on the design in 1.html */
+
+/* Font import for AlibabaPuHuiTi */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+/* Main layout */
+body {
+    font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background-color: #EBEEF2;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    padding: 24px 0 0 20px;
+    color: #11193C;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33px;
+    margin-bottom: 12px;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+}
+.sidebar-logo svg {
+    width: 48px;
+    height: 48px;
+}
+.sidebar-logo img {
+    width: 60px;
+    height: auto;
+    display: block;
+}
+
+.sidebar-menu {
+    padding: 0 0 0 20px;
+}
+
+.sidebar.no-frame,
+.sidebar .no-frame,
+.sidebar .html-container,
+.sidebar .prose {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.sidebar .block,
+.sidebar .hide-container,
+.sidebar .auto-margin {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.submenu {
+    margin-bottom: 20px;
+}
+
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    border-radius: 12px;
+    min-width: 200px;
+    min-height: 36px;
+    box-sizing: border-box;
+    transition: none !important;
+}
+
+.sidebar-menu-item.active {
+    background-color: #DDE3ED !important;
+    color: #275EF4 !important;
+    padding-left: 16px;
+}
+
+.sidebar-menu-item.inactive {
+    background-color: #DDE3ED !important;
+    color: #11193C !important;
+    padding-left: 16px;
+}
+
+/* Submenu items: color varies by active/inactive */
+.submenu .sidebar-menu-item.active {
+    background-color: #FFFFFF !important;
+    color: #275EF4 !important;
+}
+
+.submenu .sidebar-menu-item.inactive {
+    background-color: #DDE3ED !important;
+    color: #11193C !important;
+}
+
+.sidebar-menu-item svg {
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.sidebar-menu-item span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+    flex: 1;
+}
+
+/* Group heading font style (一级菜单) */
+.sidebar-menu > .sidebar-menu-item span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #11193C;
+}
+
+/* Submenu item font style (二级菜单) */
+.submenu .sidebar-menu-item span {
+    font-size: 20px;
+    font-weight: 400;
+    color: #11193C;
+}
+
+.submenu .sidebar-menu-item.active span {
+    color: #275EF4 !important;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    margin-left: auto;
+}
+
+/* Main content area */
+.main-content {
+    padding: 24px;
+    background-color: #FFFFFF;
+    color: rgba(0,0,0,0.85);
+}
+
+.top-title {
+    color: #11193C;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33px;
+    margin-bottom: 6px;
+}
+
+.page-tag {
+    color: #275EF4;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+    margin-bottom: 6px;
+    margin-top: 0;
+}
+
+.no-frame > * {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.block.no-frame {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.no-frame .html-container {
+    padding: 0 !important;
+}
+
+.no-frame .prose {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Sidebar inner content width 90% */
+.sidebar .prose.no-frame {
+    width: 90% !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+}
+
+/* Dropdown/select input background to match target style */
+.svelte-1hfxrpf .secondary-wrap input,
+.svelte-1scun43 .secondary-wrap input {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 12px !important;
+    padding: 6px 10px !important;
+    color: #11193C !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 25px !important;
+}
+
+.svelte-1hfxrpf .secondary-wrap,
+.svelte-1scun43 .secondary-wrap {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+}
+
+/* Weaken visual weight but keep structure (low-key containers) */
+.svelte-1hfxrpf .wrap-inner,
+.svelte-1scun43 .wrap-inner,
+.svelte-1hfxrpf .secondary-wrap.weak,
+.svelte-1scun43 .secondary-wrap.weak {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    display: contents !important;
+}
+
+.svelte-1hfxrpf .secondary-wrap.weak input,
+.svelte-1scun43 .secondary-wrap.weak input {
+    background: transparent !important;
+    border: none !important;
+    padding: 4px 6px !important;
+}
+
+#model .secondary-wrap,
+#model_type .secondary-wrap,
+#template .secondary-wrap,
+#train_record .secondary-wrap {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 8px !important;
+}
+
+#model .secondary-wrap input,
+#model_type .secondary-wrap input,
+#template .secondary-wrap input,
+#train_record .secondary-wrap input {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 12px !important;
+    padding: 6px 10px !important;
+}
+
+.svelte-1hfxrpf .icon-wrap .dropdown-arrow path,
+.svelte-1scun43 .icon-wrap .dropdown-arrow path {
+    fill: #8AA2D4 !important;
+}
+
+.svelte-1hfxrpf .icon-wrap .dropdown-arrow path,
+.svelte-1scun43 .icon-wrap .dropdown-arrow path {
+    fill: #275EF4 !important;
+}
+
+/* Textarea/System input style */
+.svelte-1ae7ssi textarea,
+.svelte-1ae7ssi .input-container textarea {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 12px !important;
+    padding: 10px 12px !important;
+    color: #11193C !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 25px !important;
+}
+
+/* Slider number input container */
+.svelte-1kajgn1 .tab-like-container input {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 8px !important;
+    padding: 4px 8px !important;
+}
+
+/* Dropdown generic border-none override */
+input.border-none {
+    border: 1px solid #D0D7E3 !important;
+    background-color: #EBEEF2 !important;
+    border-radius: 12px !important;
+}
+
+/* Generic chip style for multiselect tokens (best-effort) */
+.secondary-wrap .chip,
+.secondary-wrap .tag,
+.secondary-wrap .selected,
+.secondary-wrap span[role="option"],
+.secondary-wrap span[aria-selected="true"] {
+    background-color: #DDE3ED !important;
+    border-radius: 16px !important;
+    padding: 4px 8px !important;
+    margin: 3px !important;
+}
+
+/* Accordion panel styles to match design */
+.accordion {
+    border: 0.5px solid #11193C !important;
+    border-radius: 6px !important;
+    margin-bottom: 16px !important;
+    background-color: #FFFFFF !important;
+    color: rgba(0,0,0,0.85) !important;
+}
+
+.accordion-header {
+    background-color: #F6F9FC !important;
+    border: 0.5px solid #11193C !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Input styles */
+.block {
+    background-color: #F6F9FC !important;
+    border: 0.5px solid #11193C !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    margin-bottom: 12px !important;
+    color: rgba(0,0,0,0.85) !important;
+}
+
+/* Label styles */
+.label-wrap {
+    color: #000000 !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+}
+
+/* Gradio textbox styles */
+:has(.textbox) {
+    background-color: #F6F9FC !important;
+    border: 0.5px solid #11193C !important;
+    border-radius: 4px !important;
+}
+
+/* Gradio dropdown styles */
+:has(.dropdown) {
+    background-color: #F6F9FC !important;
+    border: 0.5px solid #11193C !important;
+    border-radius: 4px !important;
+}
+
+/* Checkbox styles */
+.checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 2px !important;
+    background-color: #11193C !important;
+    margin-right: 10px !important;
+}
+
+/* Slider styles */
+.slider {
+    width: 294px !important;
+    height: 8px !important;
+    background-color: #DDE3ED !important;
+    border-radius: 311px !important;
+    margin: 5px 0 !important;
+}
+
+/* Button styles */
+.primary-button {
+    background-color: #275EF4 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+}
+
+/* General button styles */
+button {
+    font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+}
+
+/* Input field general styles */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 25px !important;
+}
+
+/* Gradio-specific overrides */
+.gradio-container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    background-color: #FFFFFF !important;
+}
+
+.tabitem {
+    padding: 20px !important;
+}
+
+/* Hide right-side tab navigation */
+.main-content .tab-nav,
+.main-content .tab-nav--list,
+.main-content .tab-nav--item,
+.main-content button[role="tab"] {
+    display: none !important;
+}
+
+/* Custom theme for Gradio */
+:root {
+    --primary-500: #275EF4;
+    --primary-600: #1a4bc7;
+    --border-color-primary: #11193C;
+    --background-fill-primary: #FFFFFF;
+    --block-title-text-color: #11193C;
+    --body-text-color: rgba(0,0,0,0.85);
+    --body-text-color-subdued: #666666;
+    --block-background-fill: #F6F9FC;
+    --block-border-color: #11193C;
+    --input-background-fill: #F6F9FC;
+    --input-border-color: #11193C;
+    --font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif;
+    --font-size-base: 18px;
+    --font-line-height: 25px;
+}
+
+.dark {
+    --primary-500: #275EF4;
+    --primary-600: #1a4bc7;
+}
+
+/* Global text styling */
+* {
+    font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif !important;
+}
+
+/* Ensure all text elements use proper fonts */
+h1, h2, h3, h4, h5, h6,
+p, span, div, label,
+button, input, textarea, select {
+    font-family: 'AlibabaPuHuiTi', 'Noto Sans SC', sans-serif !important;
+}
+
+/* Specific font sizes for different elements based on 1.html */
+h1, .main-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 33px !important;
+    color: #11193C !important;
+}
+
+h2, .section-title, .sidebar-header {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 33px !important;
+    color: #11193C !important;
+}
+
+h3, .subsection-title {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 27px !important;
+    color: #11193C !important;
+}
+
+.menu-item, .sidebar-menu-item span {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 27px !important;
+}
+
+.submenu-item, .submenu .sidebar-menu-item span {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 27px !important;
+}
+
+.form-label, label, .label-wrap {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+    color: #000000 !important;
+}
+
+.form-input, input, textarea, select {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 25px !important;
+    color: rgba(0,0,0,0.85) !important;
+}
+
+/* Update accordion open/close button */
+.accordion-button {
+    background-color: #F6F9FC !important;
+    color: #000000 !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+}
+.custom-footer {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    color: #666666;
+    font-size: 14px;
+}
+.accordion-header {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+}
+
+.block.align.padded {
+    background-color: #FFFFFF !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 8px !important;
+}
+
+.label-wrap {
+    color: #11193C !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 25px !important;
+    background-color: #EBEEF2 !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.label-wrap .icon {
+    color: #275EF4 !important;
+}
+.block.align {
+    background-color: #FFFFFF !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 8px !important;
+}
+
+.svelte-1hfxrpf .container {
+    background: transparent !important;
+    border: none !important;
+    padding-bottom: 0 !important;
+}
+
+.svelte-1hfxrpf .wrap-inner,
+.svelte-1hfxrpf .secondary-wrap {
+    background-color: #EBEEF2 !important;
+    border: 1px solid #D0D7E3 !important;
+    border-radius: 12px !important;
+}

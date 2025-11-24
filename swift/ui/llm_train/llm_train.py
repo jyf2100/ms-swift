@@ -248,9 +248,14 @@ class LLMTrain(BaseUI):
             if device_count > 0:
                 default_device = '0'
             with gr.Blocks():
+                # 模型设置面板（移除外层Accordion，避免重复button）
                 Model.build_ui(base_tab)
+                
+                # 数据集设置面板（移除外层Accordion，避免重复button）
                 Dataset.build_ui(base_tab)
-                with gr.Accordion(elem_id='train_param', open=True):
+                
+                # 训练参数设置面板
+                with gr.Accordion(elem_id='train_param', label='训练参数设置', open=True):
                     with gr.Row():
                         gr.Dropdown(elem_id='train_stage', choices=['pt', 'sft'], value='sft', scale=4)
                         gr.Dropdown(elem_id='train_type', scale=4, choices=list(get_supported_tuners()))
@@ -273,6 +278,7 @@ class LLMTrain(BaseUI):
                             value=None,
                             choices=['zero0', 'zero1', 'zero2', 'zero3', 'zero2_offload', 'zero3_offload'])
                         gr.Textbox(elem_id='sequence_parallel_size', lines=1, scale=4)
+                
                 Hyper.build_ui(base_tab)
                 Runtime.build_ui(base_tab)
                 with gr.Row(equal_height=True):
