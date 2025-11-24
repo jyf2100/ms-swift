@@ -309,8 +309,7 @@ class BaseUI:
                            has_record=True,
                            arg_cls=BaseArguments,
                            is_ref_model=False,
-                           is_reward_model=False,
-                           skip_local_args: bool = False):
+                           is_reward_model=False):
         keys = cls.valid_element_keys()
         if allow_keys:
             keys = [key for key in keys if key in allow_keys]
@@ -332,7 +331,7 @@ class BaseUI:
             else:
                 return ret
 
-        if os.path.exists(local_args_path) and not skip_local_args:
+        if os.path.exists(local_args_path):
             try:
                 if hasattr(arg_cls, 'resume_from_checkpoint'):
                     try:
