@@ -255,8 +255,9 @@ button#reset:hover {
 
 /* Inherit parent background and text color for aligned buttons */
 button.align {
-    background-color: #DBEAFE !important;
-    color: #3B82F6 !important;
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+    border: 1px solid ButtonBorder !important;
 }
 
 /* Sidebar styles */
