@@ -299,6 +299,8 @@ button {
 .secondary-wrap { gap: 0 !important; display: flex; align-items: center; }
 .secondary-wrap { margin: 0 !important; }
 
+#clear_cache_wrap { display: contents !important; }
+
 .sidebar-header {
     display: none;
 }
