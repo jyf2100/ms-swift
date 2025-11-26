@@ -534,3 +534,27 @@ input[type="range"]::-moz-range-thumb {
     margin: 0 !important;
     padding: 0 !important;
 }
+:root {
+    --brand-bg: #FFFFFF;
+    --soft-bg: #F5F7FA;
+    --border-color: #E2E8F0;
+    --brand-text: #0B1F3A;
+    --muted-text: #64748B;
+    --accent-color: #275EF4;
+}
+html, body { background-color: var(--soft-bg) !important; }
+.gradio-container { background-color: var(--soft-bg) !important; }
+.main-content { background-color: var(--soft-bg) !important; color: var(--brand-text) !important; }
+.topbar { background-color: var(--brand-bg) !important; border-bottom: 1px solid var(--border-color) !important; }
+.topbar .brand .logo line { stroke: var(--brand-text) !important; }
+.topbar .brand .titles .title { color: var(--brand-text) !important; }
+.topbar .brand .titles .subtitle { color: var(--muted-text) !important; }
+.label-wrap { color: var(--brand-text) !important; }
+.accordion { background-color: var(--brand-bg) !important; border: 1px solid var(--border-color) !important; }
+.accordion-button { background-color: var(--brand-bg) !important; color: var(--brand-text) !important; }
+.secondary-wrap { background-color: var(--brand-bg) !important; border: 1px solid var(--border-color) !important; }
+.secondary-wrap input { color: var(--brand-text) !important; }
+.page-title { color: var(--accent-color) !important; }
+.sidebar { background-color: var(--brand-bg) !important; border-right: 1px solid var(--border-color) !important; }
+.sidebar-menu .sidebar-group-title { color: var(--brand-text) !important; }
+.sidebar-menu-item:hover { background-color: var(--soft-bg) !important; }
