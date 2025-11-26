@@ -510,18 +510,15 @@ button.svelte-o34uqh,
 /* Force submit button to use shallow blue background */
 #submit,
 button#submit {
-    background-color: #DBEAFE !important;
+    background-color: inherit !important;
     color: #3B82F6 !important;
+    border-radius: 10px !important;
+    border: 1px solid #BFDBFE !important;
 }
 #submit:hover,
 button#submit:hover {
-    background-color: #DBEAFE !important;
+    background-color: inherit !important;
     color: #3B82F6 !important;
-}
-#submit,
-button#submit {
-    border-radius: 10px !important;
-    border: 1px solid #BFDBFE !important;
 }
 
 /* Range slider accent/thumb */
@@ -573,3 +570,24 @@ html, body { background-color: var(--soft-bg) !important; }
 .sidebar { background-color: var(--brand-bg) !important; border-right: 1px solid var(--border-color) !important; }
 .sidebar-menu .sidebar-group-title { color: var(--brand-text) !important; }
 .sidebar-menu-item:hover { background-color: var(--soft-bg) !important; }
+#submit_wrap {
+    background-color: #DBEAFE !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}
+#submit_wrap #submit { background-color: inherit !important; }
+
+#rollout_wrap { background-color: #DBEAFE !important; border-radius: 8px !important; padding: 8px !important; }
+#rollout_wrap #rollout { background-color: inherit !important; }
+
+#rollout_refresh_tasks_wrap { background-color: #DBEAFE !important; border-radius: 8px !important; padding: 8px !important; }
+#rollout_refresh_tasks_wrap #rollout_refresh_tasks { background-color: inherit !important; }
+
+#rollout_show_log_wrap { background-color: #DBEAFE !important; border-radius: 8px !important; padding: 8px !important; }
+#rollout_show_log_wrap #rollout_show_log { background-color: inherit !important; }
+
+#rollout_stop_show_log_wrap { background-color: #DBEAFE !important; border-radius: 8px !important; padding: 8px !important; }
+#rollout_stop_show_log_wrap #rollout_stop_show_log { background-color: inherit !important; }
+
+#rollout_kill_task_wrap { background-color: #DBEAFE !important; border-radius: 8px !important; padding: 8px !important; }
+#rollout_kill_task_wrap #rollout_kill_task { background-color: inherit !important; }
