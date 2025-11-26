@@ -240,7 +240,7 @@ html.dark, body.dark {
 #clear_cache,
 button#submit,
 button#clear_cache {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
     color: inherit !important;
     border: none !important;
     border-radius: 8px !important;
@@ -251,12 +251,12 @@ button#clear_cache {
 #clear_cache:hover,
 button#submit:hover,
 button#clear_cache:hover {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
 }
 
 #reset,
 button#reset {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
     color: inherit !important;
     border: none !important;
     border-radius: 8px !important;
@@ -265,18 +265,18 @@ button#reset {
 
 #reset:hover,
 button#reset:hover {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
 }
 
 /* Inherit parent background and text color for aligned buttons */
 button.align {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
     color: inherit !important;
     border: none !important;
 }
 
 button {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
 }
 
 /* Ensure Gradio/Svelte button class also uses fixed background */
@@ -284,7 +284,7 @@ button.svelte-o34uqh,
 .svelte-o34uqh.lg,
 .svelte-o34uqh.primary,
 .svelte-o34uqh.secondary {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: #DBEAFE !important;
     color: inherit !important;
     border: none !important;
 }
