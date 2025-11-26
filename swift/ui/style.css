@@ -279,6 +279,9 @@ button {
 /* Tighten container gaps for form wrappers */
 .wrap { padding: 0 !important; margin: 0 !important; }
 .wrap-inner { gap: 0 !important; padding: 0 !important; margin: 0 !important; display: flex; }
+.wrap-inner { flex-direction: column !important; }
+.wrap-inner > * { width: 100% !important; }
+.block.align, .block.align.padded { flex: 0 0 100% !important; min-width: 100% !important; }
 .wrap { gap: 0 !important; }
 .reference { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
 .secondary-wrap { gap: 0 !important; display: flex; align-items: center; }
