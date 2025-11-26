@@ -220,13 +220,14 @@ html.dark, body.dark {
 }
 
 /* Button styles (unify primary/secondary background) */
+/* Buttons use system colors, not inherited */
 #submit,
 #clear_cache,
 button#submit,
 button#clear_cache {
-    background-color: inherit !important;
-    color: inherit !important;
-    border: none !important;
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+    border: 1px solid ButtonBorder !important;
     border-radius: 8px !important;
     padding: 10px 20px !important;
 }
@@ -235,21 +236,21 @@ button#clear_cache {
 #clear_cache:hover,
 button#submit:hover,
 button#clear_cache:hover {
-    background-color: inherit !important;
+    filter: brightness(0.97);
 }
 
 #reset,
 button#reset {
-    background-color: inherit !important;
-    color: inherit !important;
-    border: none !important;
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+    border: 1px solid ButtonBorder !important;
     border-radius: 8px !important;
     padding: 10px 20px !important;
 }
 
 #reset:hover,
 button#reset:hover {
-    background-color: inherit !important;
+    filter: brightness(0.97);
 }
 
 /* Inherit parent background and text color for aligned buttons */
