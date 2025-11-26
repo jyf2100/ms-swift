@@ -155,7 +155,8 @@ class LLMInfer(BaseUI):
 
                 with gr.Row():
                     clear_history = gr.Button(elem_id='clear_history')
-                    submit = gr.Button(elem_id='submit')
+                    with gr.Column(elem_id='submit_wrap'):
+                        submit = gr.Button(elem_id='submit')
 
                 cls.element('load_checkpoint').click(
                     cls.deploy_model, list(base_tab.valid_elements().values()),

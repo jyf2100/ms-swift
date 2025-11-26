@@ -64,6 +64,11 @@ html.dark, body.dark {
     line-height: 22px !important;
 }
 
+.label-wrap.svelte-1w6vloh,
+.label-wrap.svelte-1w6vloh.open {
+    background-color: var(--body-background-fill) !important;
+}
+
 .block.align.padded {
     background-color: rgba(255,255,255,0.9) !important;
     border: 1px solid #E2E8F0 !important;
@@ -293,6 +298,89 @@ button.svelte-o34uqh,
     border: none !important;
 }
 
+#submit,
+button#submit {
+    margin: 1px !important;
+}
+
+#submit,
+button#submit {
+    border: none !important;
+}
+
+#submit,
+button#submit,
+.svelte-o34uqh.lg,
+.svelte-o34uqh.primary,
+.svelte-o34uqh.secondary {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    border-color: transparent !important;
+    border-image: none !important;
+    background-clip: padding-box !important;
+    border-style: none !important;
+    filter: none !important;
+}
+
+#submit:hover,
+button#submit:hover,
+#submit:focus,
+button#submit:focus,
+#submit:focus-visible,
+button#submit:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+#submit_wrap button,
+#submit_wrap button:hover,
+#submit_wrap button:focus,
+#submit_wrap button:focus-visible,
+#submit_wrap button:active {
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    border-color: transparent !important;
+    border-image: none !important;
+    background-clip: padding-box !important;
+    border-style: none !important;
+    filter: none !important;
+}
+
+#submit::before,
+#submit::after,
+#submit_wrap button::before,
+#submit_wrap button::after {
+    content: none !important;
+    border: 0 !important;
+    border-style: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+button#submit.svelte-o34uqh,
+button#submit.svelte-o34uqh.primary,
+button#submit.svelte-o34uqh.lg,
+#llm_train button#submit,
+#llm_rlhf button#submit,
+#llm_grpo button#submit,
+#llm_infer button#submit {
+    border: 0 !important;
+    border-width: 0 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background-image: none !important;
+}
+
 /* Sidebar styles */
 .sidebar {
     width: 200px;
@@ -397,6 +485,18 @@ button.svelte-o34uqh,
 .sidebar-menu-item.inactive {
     background-color: transparent !important;
     color: #6B7280 !important;
+}
+
+.wrap,
+.wrap-inner,
+.secondary-wrap,
+.reference,
+.html-container {
+    margin: 1px !important;
+}
+
+#submit_wrap {
+    margin: 1px !important;
 }
 
 .sidebar-menu-item span {

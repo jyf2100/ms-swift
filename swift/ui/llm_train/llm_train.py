@@ -278,7 +278,8 @@ class LLMTrain(BaseUI):
                 with gr.Row(equal_height=True):
                     gr.Textbox(elem_id='envs', scale=12)
                     gr.Checkbox(elem_id='dry_run', value=False, scale=4)
-                    submit = gr.Button(elem_id='submit', scale=4, variant='primary')
+                    with gr.Column(elem_id='submit_wrap'):
+                        submit = gr.Button(elem_id='submit', variant='primary')
 
                 Tuner.build_ui(base_tab)
                 Optimizer.build_ui(base_tab)
