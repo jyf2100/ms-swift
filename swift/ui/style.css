@@ -225,9 +225,9 @@ html.dark, body.dark {
 #clear_cache,
 button#submit,
 button#clear_cache {
-    background-color: ButtonFace !important;
-    color: ButtonText !important;
-    border: 1px solid ButtonBorder !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    border: none !important;
     border-radius: 8px !important;
     padding: 10px 20px !important;
 }
@@ -236,28 +236,28 @@ button#clear_cache {
 #clear_cache:hover,
 button#submit:hover,
 button#clear_cache:hover {
-    filter: brightness(0.97);
+    background-color: inherit !important;
 }
 
 #reset,
 button#reset {
-    background-color: ButtonFace !important;
-    color: ButtonText !important;
-    border: 1px solid ButtonBorder !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    border: none !important;
     border-radius: 8px !important;
     padding: 10px 20px !important;
 }
 
 #reset:hover,
 button#reset:hover {
-    filter: brightness(0.97);
+    background-color: inherit !important;
 }
 
 /* Inherit parent background and text color for aligned buttons */
 button.align {
-    background-color: ButtonFace !important;
-    color: ButtonText !important;
-    border: 1px solid ButtonBorder !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    border: none !important;
 }
 
 /* Sidebar styles */
