@@ -313,7 +313,7 @@ button.svelte-o34uqh,
 .secondary-wrap { gap: 0 !important; display: flex; align-items: center; }
 .secondary-wrap { margin: 0 !important; }
 
-#clear_cache_wrap { display: contents !important; }
+#clear_cache_wrap { display: block !重要; }
 
 .sidebar-header {
     display: none;
@@ -480,7 +480,18 @@ button.svelte-o34uqh,
 }
 
 #clear_cache_wrap #clear_cache {
+    background-color: inherit !important;
     color: #3B82F6 !important;
+}
+
+/* Submit button wrapper background and inheritance */
+#submit_wrap {
+    background-color: #DBEAFE !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}
+#submit_wrap #submit {
+    background-color: inherit !important;
 }
 .gradio-container footer.svelte-czcr5b > * {
     display: none !important;
