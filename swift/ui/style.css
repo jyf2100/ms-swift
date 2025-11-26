@@ -97,6 +97,9 @@ html.dark, body.dark {
 }
 .block.align .wrap-inner {
     gap: 8px !important;
+    flex-direction: column !important;
+    display: flex !important;
+    width: 100% !important;
 }
 .block.align .secondary-wrap {
     padding: 8px 12px !important;
@@ -109,10 +112,22 @@ html.dark, body.dark {
 .block.align,
 .block.align.padded {
     padding: 12px 16px !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
 }
 
 .block.align .container .wrap {
     margin-top: 8px !important;
+}
+
+/* One element per line in form */
+.form {
+    display: block !important;
+}
+.form > .block.align {
+    display: block !important;
+    width: 100% !important;
 }
 
 .page-title {
@@ -279,9 +294,6 @@ button {
 /* Tighten container gaps for form wrappers */
 .wrap { padding: 0 !important; margin: 0 !important; }
 .wrap-inner { gap: 0 !important; padding: 0 !important; margin: 0 !important; display: flex; }
-.wrap-inner { flex-direction: column !important; }
-.wrap-inner > * { width: 100% !important; }
-.block.align, .block.align.padded { flex: 0 0 100% !important; min-width: 100% !important; }
 .wrap { gap: 0 !important; }
 .reference { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
 .secondary-wrap { gap: 0 !important; display: flex; align-items: center; }
