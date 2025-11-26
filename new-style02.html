@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LLM采样配置</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<style type="text/tailwindcss">
+    @layer base {
+        :root {
+            --brand-blue: #2563eb;
+        }
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background-color: var(--brand-blue);
+            border-radius: 9999px;
+            cursor: pointer;
+            margin-top: -6px;
+        }
+        input[type='range']::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background-color: var(--brand-blue);
+            border-radius: 9999px;
+            cursor: pointer;
+            border: none;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+    }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-slate-50">
+<div class="flex flex-col h-screen">
+<div class="flex-shrink-0 bg-white border-b border-slate-200">
+<div class="mx-auto px-6">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="titles">
+<div class="text-lg font-semibold text-slate-900">新大陆大模型训练推理平台</div>
+<div class="text-xs text-slate-500">Newland AI Training &amp; Inference Platform</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-slate-600">
+<span class="material-symbols-outlined">person</span>
+</span>
+<span class="text-slate-700 text-sm">admin</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-white p-4 border-r border-slate-200 overflow-y-auto">
+<nav class="space-y-2">
+<div>
+<h2 class="px-2 text-xs font-semibold text-slate-400 mb-2">模型训练</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">layers</span> LLM预训练/微调</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">supervisor_account</span> LLM人类对齐</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">group_work</span> LLM GRPO</a></li>
+</ul>
+</div>
+<div>
+<h2 class="px-2 text-xs font-semibold text-slate-400 mb-2 mt-4">模型服务</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">model_training</span> LLM推理</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">ios_share</span> LLM导出</a></li>
+</ul>
+</div>
+<div>
+<h2 class="px-2 text-xs font-semibold text-slate-400 mb-2 mt-4">评测与演示</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 rounded-md hover:bg-slate-100" href="#"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">bar_chart_4_bars</span> LLM评测</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 text-sm bg-blue-50 text-blue-600 rounded-md font-medium" href="#"><span class="material-symbols-outlined text-blue-600" style="font-size:20px;">tune</span> LLM采样</a></li>
+</ul>
+</div>
+</nav>
+</aside>
+<main class="flex-1 p-8 bg-slate-50 overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<header class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-200 rounded-full">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<div>
+<h1 class="text-2xl font-bold text-slate-900">LLM采样配置</h1>
+<p class="text-slate-500 mt-1 text-sm">在这里，您可以配置LLM采样参数，以控制模型生成文本的多样性和创造性。</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button id="resetBtn" class="px-4 py-2 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md shadow-sm hover:bg-slate-50" type="button">重置为默认值</button>
+<button id="saveBtn" class="px-4 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700" type="button">保存更改</button>
+</div>
+</header>
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-lg border border-slate-200">
+<h2 class="text-base font-semibold text-slate-800 mb-6 flex items-center justify-between">
+                                基本配置信息
+                                <span class="material-symbols-outlined text-slate-500 cursor-pointer">expand_less</span>
+</h2>
+<div class="section-body">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="temperature">Temperature</label>
+<p class="text-xs text-slate-500 mt-1">值越高，输出越随机；值越低，输出越确定。范围：0.0 - 2.0。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="temperature" max="2" min="0" name="temperature" step="0.1" type="range" value="0.7"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="0.7"/>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="top_p">Top-p (nucleus sampling)</label>
+<p class="text-xs text-slate-500 mt-1">从累积概率超过阈值“p”的标记中进行采样。范围：0.0 - 1.0。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="top_p" max="1" min="0" name="top_p" step="0.01" type="range" value="0.9"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="0.9"/>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="top_k">Top-k</label>
+<p class="text-xs text-slate-500 mt-1">从k个最可能的下一个标记中进行采样。范围：0 - 100。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="top_k" max="100" min="0" name="top_k" step="1" type="range" value="50"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="50"/>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="max_tokens">Maximum tokens</label>
+<p class="text-xs text-slate-500 mt-1">生成的最大标记数。范围：1 - 4096。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="max_tokens" max="4096" min="1" name="max_tokens" step="1" type="range" value="1024"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="1024"/>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="presence_penalty">Presence penalty</label>
+<p class="text-xs text-slate-500 mt-1">惩罚新标记的出现。范围：-2.0 - 2.0。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="presence_penalty" max="2" min="-2" name="presence_penalty" step="0.1" type="range" value="0"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="0.0"/>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="frequency_penalty">Frequency penalty</label>
+<p class="text-xs text-slate-500 mt-1">根据现有频率惩罚新标记。范围：-2.0 - 2.0。</p>
+<div class="mt-2 flex items-center gap-4">
+<input class="w-full h-1 bg-slate-200 rounded-full appearance-none cursor-pointer range-lg accent-blue-600" id="frequency_penalty" max="2" min="-2" name="frequency_penalty" step="0.1" type="range" value="0"/>
+<input class="w-20 text-center border-slate-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" type="number" value="0.0"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg border border-slate-200">
+<h2 class="text-base font-semibold text-slate-800 mb-4 flex items-center justify-between">
+                                停止序列
+                                <span class="material-symbols-outlined text-slate-500 cursor-pointer">expand_less</span>
+</h2>
+<div class="section-body">
+<p class="text-xs text-slate-500 mb-2">模型将停止生成的序列。输入序列并按Enter。</p>
+<div id="stop_sequences_container" class="flex items-center flex-wrap gap-2 p-2 border border-slate-300 rounded-md">
+<span data-stop="user:" class="bg-slate-100 text-slate-700 text-sm font-medium px-2 py-1 rounded-md flex items-center">
+                                    user:
+                                    <button class="ml-1.5 text-slate-500 hover:text-slate-700">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</span>
+<span data-stop="assistant:" class="bg-slate-100 text-slate-700 text-sm font-medium px-2 py-1 rounded-md flex items-center">
+                                    assistant:
+                                    <button class="ml-1.5 text-slate-500 hover:text-slate-700">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</span>
+<input class="flex-grow border-0 p-1 focus:ring-0 text-sm" id="stop_sequences" placeholder="添加序列..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var rangeInputs = Array.from(document.querySelectorAll('input[type=range]'));
+  var numberInputs = Array.from(document.querySelectorAll('input[type=number]'));
+  var initialValues = {};
+  rangeInputs.forEach(function(r) { initialValues[r.id || r.name] = r.value; });
+  function clamp(val, min, max, step) {
+    var v = parseFloat(val);
+    if (isNaN(v)) v = 0;
+    var s = step ? parseFloat(step) : 1;
+    v = Math.round(v / s) * s;
+    if (v < parseFloat(min)) v = parseFloat(min);
+    if (v > parseFloat(max)) v = parseFloat(max);
+    return s % 1 === 0 ? String(Math.round(v)) : String(Number(v.toFixed(String(s).includes('.') ? String(s).split('.')[1].length : 0)));
+  }
+  document.querySelectorAll('.mt-2.flex.items-center.gap-4').forEach(function(row) {
+    var r = row.querySelector('input[type=range]');
+    var n = row.querySelector('input[type=number]');
+    if (!r || !n) return;
+    n.value = r.value;
+    r.addEventListener('input', function() { n.value = r.value; });
+    n.addEventListener('input', function() { n.value = clamp(n.value, n.min || r.min, n.max || r.max, n.step || r.step); r.value = n.value; });
+    n.addEventListener('change', function() { n.value = clamp(n.value, n.min || r.min, n.max || r.max, n.step || r.step); r.value = n.value; });
+  });
+  var resetBtn = document.getElementById('resetBtn');
+  var saveBtn = document.getElementById('saveBtn');
+  function showToast(text) {
+    var el = document.createElement('div');
+    el.className = 'fixed bottom-4 right-4 bg-slate-900 text-white px-3 py-2 rounded-md shadow-lg text-sm';
+    el.textContent = text;
+    document.body.appendChild(el);
+    setTimeout(function() { el.style.opacity = '0'; el.style.transition = 'opacity 200ms'; }, 1800);
+    setTimeout(function() { el.remove(); }, 2100);
+  }
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      document.querySelectorAll('.mt-2.flex.items-center.gap-4').forEach(function(row) {
+        var r = row.querySelector('input[type=range]');
+        var n = row.querySelector('input[type=number]');
+        if (!r || !n) return;
+        var key = r.id || r.name;
+        var val = initialValues[key];
+        r.value = val;
+        n.value = val;
+      });
+      showToast('已重置为默认值');
+    });
+  }
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function() { showToast('已保存采样配置'); });
+  }
+  document.querySelectorAll('.bg-white.p-6.rounded-lg.border.border-slate-200').forEach(function(card) {
+    var header = card.querySelector('h2');
+    var body = card.querySelector('.section-body');
+    var icon = header ? header.querySelector('.material-symbols-outlined') : null;
+    if (!header || !body) return;
+    header.style.cursor = 'pointer';
+    header.addEventListener('click', function() {
+      var hidden = body.classList.toggle('hidden');
+      if (icon) icon.textContent = hidden ? 'expand_more' : 'expand_less';
+    });
+  });
+  var stopInput = document.getElementById('stop_sequences');
+  var stopContainer = document.getElementById('stop_sequences_container');
+  var stops = ['user:', 'assistant:'];
+  function renderStops() {
+    Array.from(stopContainer.querySelectorAll('span[data-stop]')).forEach(function(s) { s.remove(); });
+    stops.forEach(function(s) {
+      var chip = document.createElement('span');
+      chip.className = 'bg-slate-100 text-slate-700 text-sm font-medium px-2 py-1 rounded-md flex items-center';
+      chip.dataset.stop = s;
+      chip.innerHTML = s + '<button class="ml-1.5 text-slate-500 hover:text-slate-700"><span class="material-symbols-outlined" style="font-size: 16px;">close</span></button>';
+      stopContainer.insertBefore(chip, stopInput);
+    });
+  }
+  function addStop(val) {
+    var v = (val || '').trim();
+    if (!v) return;
+    if (!stops.includes(v)) { stops.push(v); renderStops(); }
+  }
+  if (stopContainer && stopInput) {
+    renderStops();
+    stopContainer.addEventListener('click', function(e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      var chip = btn.closest('span[data-stop]');
+      if (!chip) return;
+      var v = chip.dataset.stop;
+      stops = stops.filter(function(x) { return x !== v; });
+      chip.remove();
+    });
+    stopInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        addStop(stopInput.value.replace(/,$/, ''));
+        stopInput.value = '';
+      }
+    });
+    stopInput.addEventListener('blur', function() { addStop(stopInput.value); stopInput.value = ''; });
+  }
+});
+</script>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LLM采样配置</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .slider-thumb::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: #4F46E5;border-radius: 9999px;
+        cursor: pointer;
+    }
+    .slider-thumb::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: #4F46E5;border-radius: 9999px;
+        cursor: pointer;
+        border: none;
+    }
+    .form-input-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #ffffff;border: 1px solid #CBD5E1;border-radius: 0.5rem;}
+    .form-input-number {
+        border: none;
+        background-color: transparent;
+        text-align: center;
+        -moz-appearance: textfield;
+    }
+    .form-input-number::-webkit-outer-spin-button,
+    .form-input-number::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5",
+            "background-light": "#F8FAFC", // slate-50
+            "background-dark": "#0F172A", // slate-900
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-sans text-slate-700 bg-gradient-to-br from-blue-100 via-emerald-50 to-green-100">
+<div class="flex min-h-screen">
+<aside class="w-72 flex-shrink-0 bg-white/80 backdrop-blur-sm p-6 border-r border-slate-200">
+<div class="flex items-center gap-3 mb-10">
+<svg class="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.3396 5.66039L12 12L5.66039 5.66039L12 1.17157L18.3396 5.66039Z"></path>
+<path d="M12 12L5.66039 18.3396L1.17157 12L5.66039 5.66039L12 12Z"></path>
+<path d="M12 12L18.3396 5.66039L22.8284 12L18.3396 18.3396L12 12Z"></path>
+<path d="M12 12L18.3396 18.3396L12 22.8284L5.66039 18.3396L12 12Z"></path>
+</svg>
+<h1 class="text-xl font-bold text-slate-900">新大陆大模型训练推理平台</h1>
+</div>
+<nav class="space-y-6">
+<div>
+<h2 class="text-sm font-semibold text-slate-500 mb-3 px-4">模型训练</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM预训练/微调
+            </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM人类对齐
+            </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM GRPO
+            </a></li>
+</ul>
+</div>
+<div>
+<h2 class="text-sm font-semibold text-slate-500 mb-3 px-4">模型服务</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM推理
+            </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM导出
+            </a></li>
+</ul>
+</div>
+<div>
+<h2 class="text-sm font-semibold text-slate-500 mb-3 px-4">评测与演示</h2>
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 px-4 py-2 text-slate-600 rounded-md hover:bg-slate-100" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>LLM评测
+            </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 bg-primary/10 text-primary rounded-md" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>LLM采样
+            </a></li>
+</ul>
+</div>
+</nav>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<header class="mb-8">
+<h1 class="text-3xl font-bold text-slate-900">LLM采样</h1>
+<p class="text-slate-500 mt-2">交互式采样与示例演示。</p>
+</header>
+<div class="space-y-6">
+<div class="bg-white/70 backdrop-blur-sm p-6 rounded-lg border border-slate-200/80 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="block text-sm font-medium text-slate-700" for="model-id">模型id，路径或模型服务名称(--model)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">实际的模型id，如果是训练后的模型请填入checkpoint-xxx的目录，如果是模型服务请填入模型服务名称</p>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="model-id">
+<option>Qwen/Qwen2.5-7B-Instruct</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700" for="model-type">选择模型类型(--model_type)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">SWIFT已支持的模型类型，model是服务名称时请置空</p>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="model-type">
+<option>qwen2_5</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700" for="template-type">模型Prompt模板类型(--template)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">选择匹配模型的Prompt模板，model是服务名称时请置空</p>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="template-type">
+<option>qwen2_5</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 backdrop-blur-sm p-6 rounded-lg border border-slate-200/80 shadow-sm">
+<label class="block text-sm font-medium text-slate-700" for="system">System字段(--system)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">System字段支持在加载模型后修改</p>
+<input class="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="system" type="text" value="You are Qwen, created by Alibaba Cloud. You are a helpful assistant."/>
+</div>
+<div class="bg-white/70 backdrop-blur-sm p-6 rounded-lg border border-slate-200/80 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-slate-700" for="prm-model">过程奖励模型(--prm_model)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">可以是模型id，或者plugin中定义的prm key</p>
+<input class="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="prm-model" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700" for="orm-model">结果奖励模型(--orm_model)</label>
+<p class="text-xs text-slate-500 mt-1 mb-2">通常是适配或测试用例等，定义在plugin中</p>
+<input class="w-full p-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="orm-model" type="text"/>
+</div>
+</div>
+</div>
+<div class="bg-white/70 backdrop-blur-sm p-6 rounded-lg border border-slate-200/80 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-2" for="sampler-type">采样类型(--sampler_type)</label>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="sampler-type">
+<option>sample</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-2" for="sampler-engine">推理引擎(--sampler_engine)</label>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:ring-primary focus:border-primary" id="sampler-engine">
+<option>pt</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-2" for="num-return-sequences">采样返回的原始序列数量(--num_return_sequences)</label>
+<div class="form-input-container">
+<input class="w-full px-2 py-1.5 form-input-number focus:outline-none focus:ring-0 text-slate-900" id="num-return-sequences" type="number" value="64"/>
+<button class="p-2 text-slate-500 hover:text-primary"><span class="material-symbols-outlined text-base">refresh</span></button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-xs text-slate-500">1</span>
+<input class="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer slider-thumb" max="128" min="1" style="background: linear-gradient(to right, #4F46E5 0%, #4F46E5 50%, #CBD5E1 50%, #CBD5E1 100%);" type="range" value="64"/>
+<span class="text-xs text-slate-500">128</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-2" for="n-best-to-keep">最佳序列数量(--n_best_to_keep)</label>
+<div class="form-input-container">
+<input class="w-full px-2 py-1.5 form-input-number focus:outline-none focus:ring-0 text-slate-900" id="n-best-to-keep" type="number" value="5"/>
+<button class="p-2 text-slate-500 hover:text-primary"><span class="material-symbols-outlined text-base">refresh</span></button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-xs text-slate-500">1</span>
+<input class="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer slider-thumb" max="64" min="1" style="background: linear-gradient(to right, #4F46E5 0%, #4F46E5 6.25%, #CBD5E1 6.25%, #CBD5E1 100%);" type="range" value="5"/>
+<span class="text-xs text-slate-500">64</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    // Simple script to update slider gradient.
+    function updateSliderBackground(slider) {
+      const min = slider.min || 0;
+      const max = slider.max || 100;
+      const value = slider.value;
+      const percentage = ((value - min) / (max - min)) * 100;
+      const color = tailwind.config.theme.extend.colors.primary;
+      const trackColor = '#CBD5E1'; // slate-300 for light mode
+      slider.style.background = `linear-gradient(to right, ${color} ${percentage}%, ${trackColor} ${percentage}%)`;
+    }
+    document.querySelectorAll('input[type="range"]').forEach(slider => {
+      updateSliderBackground(slider);
+      slider.addEventListener('input', (e) => {
+        updateSliderBackground(e.target);
+        // Link slider to its corresponding number input
+        const numberInputId = e.target.parentElement.previousElementSibling.querySelector('input[type="number"]').id;
+        document.getElementById(numberInputId).value = e.target.value;
+      });
+    });
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+      input.addEventListener('input', (e) => {
+          const slider = e.target.parentElement.nextElementSibling.querySelector('input[type="range"]');
+          slider.value = e.target.value;
+          updateSliderBackground(slider);
+      })
+    })
+    window.addEventListener('load', () => {
+        document.querySelectorAll('input[type="range"]').forEach(updateSliderBackground);
+    });
+  </script>
+</body></html>

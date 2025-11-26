@@ -1,0 +1,141 @@
+#!/usr/bin/env python
+"""
+创建一个最小化的Gradio应用来测试菜单功能
+"""
+
+import gradio as gr
+import os
+
+# 确保正确的路径
+os.chdir('/mnt/disk01/workspaces/worksummary/ms-swift')
+
+# 自定义CSS样式
+custom_css = """
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 137px;
+    min-width: 230px;
+    min-height: 50px;
+    box-sizing: border-box;
+    background-color: #DDE3ED;
+    color: #11193C;
+}
+
+.sidebar-menu-item.active {
+    background-color: #FFFFFF;
+    color: #275EF4;
+}
+
+.sidebar-menu-item svg {
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    margin-left: auto;
+}
+
+.submenu {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+"""
+
+def create_test_ui():
+    with gr.Blocks(css=custom_css, title="Menu Test") as demo:
+        gr.Markdown("## SWIFT Web UI 菜单功能测试")
+        gr.Markdown("点击主菜单项展开/收起子菜单")
+        
+        with gr.Row():
+            with gr.Column(scale=1, min_width=350):
+                gr.HTML("""
+                <div class="sidebar-menu">
+                    <div class="sidebar-menu-item active" onclick="toggleSubMenu('train-submenu', event)">
+                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.285 3.54822C14.93 3.54822 13.82 4.61697 13.82 5.92322C13.82 6.16072 13.82 6.27947 13.9437 6.51697L10 8.65447L6.05625 6.51697C6.18 6.27947 6.18 6.16072 6.18 5.92322C6.18 4.61697 5.07 3.54822 3.715 3.54822C2.35875 3.54822 1.25 4.61697 1.25 5.92322C1.25 7.22947 2.35875 8.29822 3.715 8.29822C4.45375 8.29822 5.07 7.94197 5.56375 7.46697L9.38375 9.60447L9.38375 13.7607C8.275 13.9982 7.535 14.9482 7.535 16.0169C7.535 17.3232 8.64375 18.3919 10 18.3919C11.3562 18.3919 12.465 17.3232 12.465 16.0169C12.465 14.9482 11.725 13.9982 10.6162 13.7607L10.6162 9.60447L14.56 7.58572C14.93 7.94197 15.5462 8.29822 16.285 8.29822C17.6412 8.29822 18.75 7.22947 18.75 5.92322C18.75 4.61697 17.6412 3.54822 16.285 3.54822ZM3.715 7.11072C2.975 7.11072 2.4825 6.63572 2.4825 5.92322C2.4825 5.21072 2.975 4.73572 3.715 4.73572C4.45375 4.73572 4.9475 5.21072 4.9475 5.92322C4.9475 6.63572 4.45375 7.11072 3.715 7.11072ZM11.2325 16.0169C11.2325 16.7295 10.6162 17.2045 10 17.2045C9.26 17.2045 8.7675 16.7295 8.7675 16.0169C8.7675 15.3045 9.26 14.8295 10 14.8295C10.74 14.8295 11.2325 15.3045 11.2325 16.0169ZM16.285 7.11072C15.5462 7.11072 15.0525 6.63572 15.0525 5.92322C15.0525 5.21072 15.5462 4.73572 16.285 4.73572C17.0237 4.73572 17.5175 5.21072 17.5175 5.92322C17.5175 6.63572 17.0237 7.11072 16.285 7.11072Z" fill="#275EF4"/>
+                        </svg>
+                        <span>模型训练</span>
+                        <svg class="arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="#11193C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <!-- 模型训练子菜单 -->
+                    <div id="train-submenu" class="submenu" style="display: none;">
+                        <div class="sidebar-menu-item inactive" onclick="clickTab('llm_train')">
+                            <svg width="0" height="0"></svg>
+                            <span>LLM预训练/微调</span>
+                        </div>
+                        <div class="sidebar-menu-item inactive" onclick="clickTab('llm_rlhf')">
+                            <svg width="0" height="0"></svg>
+                            <span>LLM人类对齐</span>
+                        </div>
+                        <div class="sidebar-menu-item inactive" onclick="clickTab('llm_grpo')">
+                            <svg width="0" height="0"></svg>
+                            <span>LLM GRPO</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-menu-item inactive" onclick="toggleSubMenu('infer-submenu', event)">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.1478 0.64307L17.9509 4.44076C18.2227 4.59241 18.3893 4.88106 18.3847 5.1923L18.3847 14.0869C18.3846 14.9175 17.9231 15.6792 17.187 16.0638L11.0332 19.2792C10.386 19.6174 9.61422 19.6174 8.96702 19.2792L2.81317 16.0638C2.07705 15.6792 1.61556 14.9175 1.61548 14.0869L1.61548 5.1923C1.61585 4.8872 1.78044 4.60592 2.04625 4.45615L8.81548 0.646917C9.5392 0.239592 10.4227 0.238135 11.1478 0.64307ZM3.00009 11.1561L3.00009 14.0869C3.00009 14.4023 3.17548 14.6908 3.45394 14.8369L9.40471 17.9461L9.40471 14.5515L3.00009 11.1561ZM17 11.3946L10.6355 14.6561L10.6355 17.9246L16.5455 14.8369C16.8249 14.6911 17 14.4021 17 14.0869L17 11.3946ZM17 6.18845L11.0632 9.53461C10.9279 9.61085 10.7847 9.67223 10.6362 9.71769L10.6355 13.2738L17 10.0123L17 6.18922L17 6.18845ZM3.00009 6.19999L3.00009 9.76153L9.40471 13.1577L9.40471 9.72615C9.24932 9.67999 9.09702 9.61769 8.9524 9.53615L3.00009 6.20076L3.00009 6.19999Z" fill="#11193C"/>
+                        </svg>
+                        <span>模型服务</span>
+                        <svg class="arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="#11193C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <!-- 模型服务子菜单 -->
+                    <div id="infer-submenu" class="submenu" style="display: none;">
+                        <div class="sidebar-menu-item inactive" onclick="clickTab('llm_infer')">
+                            <svg width="0" height="0"></svg>
+                            <span>LLM推理</span>
+                        </div>
+                        <div class="sidebar-menu-item inactive" onclick="clickTab('llm_export')">
+                            <svg width="0" height="0"></svg>
+                            <span>LLM导出</span>
+                        </div>
+                    </div>
+                </div>
+                """)
+        
+        # 添加JavaScript代码
+        js_code = """
+        function clickTab(tabId) {
+            alert('切换到标签页: ' + tabId);
+        }
+
+        function toggleSubMenu(submenuId, event) {
+            const submenu = document.getElementById(submenuId);
+            const arrow = event.currentTarget.querySelector('.arrow-icon');
+            
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'block';
+                // 旋转箭头图标
+                if (arrow) arrow.style.transform = 'rotate(90deg)';
+                console.log('展开子菜单: ' + submenuId);
+            } else {
+                submenu.style.display = 'none';
+                // 重置箭头图标
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+                console.log('收起子菜单: ' + submenuId);
+            }
+        }
+        """
+        
+        demo.load(None, None, None, js=js_code)
+    
+    return demo
+
+if __name__ == "__main__":
+    print("正在创建菜单功能测试应用...")
+    demo = create_test_ui()
+    print("应用创建成功！")
+    print("在浏览器中打开应用，测试菜单展开/收起功能")
+    print("注意控制台输出，查看JavaScript是否正常工作")
+    
+    # 启动应用
+    demo.launch(share=False, server_name="0.0.0.0", server_port=8080)

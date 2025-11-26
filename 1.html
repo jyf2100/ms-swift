@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,*::before,*::after { box-sizing: border-box }
+      body { padding: 0; margin: 0 }
+      p { margin: 0 }
+    </style>
+  </head>
+  <body>
+    <div style="background: #FFFFFF; overflow: hidden; position: relative">
+      <div
+        style="width: 1470px; height: 50px; flex: none; background: #DDE3ED; border-radius: 6px; position: absolute; left: 400px; top: 108px"></div>
+      <div
+        style="width: 1470px; height: 50px; flex: none; background: #DDE3ED; border-radius: 6px; position: absolute; left: 400px; top: 683px"></div>
+      <div
+        style="width: 1470px; height: 50px; flex: none; background: #DDE3ED; border-radius: 6px; position: absolute; left: 400px; top: 383px"></div>
+      <div
+        style="width: 1470px; height: 255px; flex: none; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 6px; position: absolute; left: 400px; top: 108px"></div>
+      <div
+        style="width: 1470px; height: 160px; flex: none; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 6px; position: absolute; left: 400px; top: 683px"></div>
+      <div
+        style="width: 1470px; height: 280px; flex: none; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 6px; position: absolute; left: 400px; top: 383px"></div>
+      <div
+        style="width: 350px; height: 1080px; flex: none; background: #EBEEF2; position: absolute; left: 0px; top: 0px"></div>
+      <div
+        style="width: 284px; height: 50px; flex: none; background: #FFFFFF; border-radius: 137px; position: absolute; left: 33px; top: 185px"></div>
+      <div
+        style="width: 230px; height: 50px; flex: none; background: #DDE3ED; border-radius: 137px; position: absolute; left: 60px; top: 255px"></div>
+      <span
+        style="color: #11193C; font-size: 24px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 33px; position: absolute; left: 430px; top: 40px">
+        轻量级大模型训练推理平台
+      </span>
+      <span
+        style="color: #11193C; font-size: 24px; font-family: AlibabaPuHuiTi; font-weight: 700; line-height: 33px; position: absolute; left: 33px; top: 113px">
+        新大陆大模型训练推理平台
+      </span>
+      <span
+        style="color: #275EF4; font-size: 20px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 27px; position: absolute; left: 80px; top: 196px">
+        模型训练
+      </span>
+      <span
+        style="color: #11193C; font-size: 20px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 27px; position: absolute; left: 80px; top: 495px">
+        模型服务
+      </span>
+      <span
+        style="color: #11193C; font-size: 20px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 27px; position: absolute; left: 80px; top: 569px">
+        评测与演示
+      </span>
+      <span
+        style="color: #000000; font-size: 18px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 25px; position: absolute; left: 430px; top: 121px">
+        模型设置
+      </span>
+      <span
+        style="color: #000000; font-size: 18px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 25px; position: absolute; left: 430px; top: 696px">
+        训练参数设置
+      </span>
+      <span
+        style="color: #000000; font-size: 18px; font-family: AlibabaPuHuiTi; font-weight: 500; line-height: 25px; position: absolute; left: 430px; top: 396px">
+        数据集设置
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 430px; top: 178px">
+        模型id或路径（--model）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 430px; top: 753px">
+        训练Stage
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 430px; top: 453px">
+        数据集名称（--dataset）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 893px; top: 453px">
+        验证集拆分比例（--split_dataset_ratio）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1255px; top: 453px">
+        句子最大长度（--max_length）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1589px; top: 453px">
+        无填充批处理（-padding_free）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1532px; top: 753px">
+        使用Liger kernel（--use_lger_kernel）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 430px; top: 269px">
+        System字段（--system）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 764px; top: 178px">
+        模型类型（--model_type）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 624px; top: 753px">
+        训练方式（--train_type）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1098px; top: 178px">
+        Prompt类型（--template）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 940px; top: 753px">
+        随机数种子（--seed）
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1432px; top: 178px">
+        训练记录
+      </span>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1230px; top: 753px">
+        训练精度（--torch_dtype）
+      </span>
+      <div
+        style="position: absolute; left: 7.6%; right: 89.38%; top: 3.7%; bottom: 91.67%">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="59"
+          height="51"
+          viewBox="0 0 59 51">
+          <g>
+            <path
+              d="M0.5,0.5L22.068748,25.083334L26.056248,25.083334L7.6593752,3.9375L18.171875,3.9375L36.931248,25.083334L58.500004,0.5L40.193748,0.5L32.21875,9.25L34.212498,11.541667L41.28125,3.9375L51.431252,3.9375L36.931248,20.499998L19.35,0.5L0.5,0.5ZM0.5,50.500004L21.706247,25.500002L40.193748,46.75L51.250004,46.75L33.306248,25.500002L37.112499,25.500002L58.500004,50.500004L39.287498,50.500004L21.887499,30.5L7.6593752,46.75L18.171875,46.75L24.7875,38.833336L26.962498,41.333332L19.35,50.500004L0.5,50.500004Z"
+              fill-rule="evenodd"
+              fill="#275EF4"
+              fill-opacity="1"
+              style="mix-blend-mode:passthrough" />
+            <path
+              d="M-0.6038524000000001,0L0.12415394000000002,0.82975709L21.403811,25.083595L0.11870122,50.176567L-0.5797787999999999,51.000004L19.584707,51.000004L27.618687,41.325802L24.77984,38.062759L17.938107,46.25L8.7617388,46.25L21.886295,31.260387L39.059757,51.000004L59.585758,51.000004L37.504078,25.188574L59.603855,2.9999999984209325e-8L39.972946,0L31.549282,9.2422667L34.200184,12.289287L41.499123,4.4375L50.328976,4.4374994999999995L36.930477,19.741812L19.576193,0L-0.6038524000000001,0ZM7.6593752,3.9375L25.621248,24.583334L26.056248,25.083334L22.068748,25.083334L0.5,0.5L19.35,0.5L36.598297,20.121243L36.931248,20.499998L37.263428,20.120567L50.993515,4.4375L51.431252,3.9375L41.28125,3.9375L34.55484,11.173395L34.212498,11.541667L33.882465,11.162321L32.21875,9.25L40.193748,0.5L58.500004,0.5L58.061317,1L37.263596,24.704535L37.00436,25.000002L36.931248,25.083334L36.857319,25.000002L36.596821,24.706366L18.171875,3.9375L7.6593752,3.9375ZM40.421486,46.25L22.441486,25.583334L27.153988,25.583334L8.7571154,4.4375L17.947048,4.4375L36.188923,25.000002L32.229628000000005,25.000002L50.173382,46.25L40.421486,46.25ZM33.306248,25.500002L37.112499,25.500002L37.170921,25.568293L58.072254,50.000004L58.500004,50.500004L39.287498,50.500004L22.218723,30.880718L21.887499,30.5L21.555069,30.879669L8.0971637,46.25L7.6593752,46.75L18.171875,46.75L24.462801,39.221889L24.7875,38.833336L25.11986,39.215359L26.962498,41.333332L19.35,50.500004L0.5,50.500004L0.9241249300000001,50.000004L21.379072,25.885708L21.706247,25.500002L22.038223,25.881584L40.193748,46.75L51.250004,46.75L50.827797,46.25L33.728455,26.000002L33.306248,25.500002Z"
+              fill-rule="evenodd"
+              fill="#275EF4"
+              fill-opacity="1" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 50px; top: 200px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="19"
+          viewBox="0 0 20 19">
+          <defs>
+            <clipPath id="master_svg0_3_549">
+              <rect x="0" y="0" width="20" height="19" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_549)">
+            <g>
+              <path
+                d="M16.285,3.5482177734375C14.93,3.5482177734375,13.82,4.6169678734375,13.82,5.9232177734375C13.82,6.1607174734375,13.82,6.2794680734375,13.943749,6.5169677734375L10,8.6544680734375L6.0562506,6.5169677734375C6.1800003,6.2794680734375,6.1800003,6.1607174734375,6.1800003,5.9232177734375C6.1800003,4.6169678734375,5.0700002,3.5482177734375,3.7149999,3.5482177734375C2.3587499999999997,3.5482177734375,1.25,4.6169678734375,1.25,5.9232177734375C1.25,7.2294676734375,2.3587499999999997,8.2982177734375,3.7149999,8.2982177734375C4.453750100000001,8.2982177734375,5.0700002,7.9419674734375,5.5637503,7.4669680734375L9.38375,9.6044683734375L9.38375,13.7607187734375C8.274999600000001,13.9982177734375,7.5349998,14.9482187734375,7.5349998,16.0169677734375C7.5349998,17.3232187734375,8.6437502,18.3919677734375,10,18.3919677734375C11.35625,18.3919677734375,12.465,17.3232187734375,12.465,16.0169677734375C12.465,14.9482187734375,11.725,13.9982177734375,10.61625,13.7607187734375L10.61625,9.6044683734375L14.559999,7.5857186734375C14.93,7.9419688734375,15.546249,8.298218273437499,16.285,8.298218273437499C17.641251,8.298218273437499,18.75,7.2294683734375,18.75,5.9232182734375005C18.75,4.6169683734374996,17.641251,3.54821833968163,16.285,3.5482177734375ZM3.7149999,7.1107177734375C2.975,7.1107177734375,2.4825,6.6357176734375,2.4825,5.9232177734375C2.4825,5.2107178734375,2.975,4.7357177734375,3.7149999,4.7357177734375C4.453750100000001,4.7357177734375,4.9475002,5.2107178734375,4.9475002,5.9232177734375C4.9475002,6.6357176734375,4.453750100000001,7.1107177734375,3.7149999,7.1107177734375ZM11.2325001,16.0169677734375C11.2325001,16.7294687734375,10.61625,17.2044677734375,10,17.2044677734375C9.2600002,17.2044677734375,8.7674999,16.7294687734375,8.7674999,16.0169677734375C8.7674999,15.3044667734375,9.2600002,14.8294677734375,10,14.8294677734375C10.7399998,14.8294677734375,11.2325001,15.3044667734375,11.2325001,16.0169677734375ZM16.285,7.1107177734375C15.54625,7.1107177734375,15.0525,6.6357176734375,15.0525,5.9232177734375C15.0525,5.2107178734375,15.54625,4.7357177734375,16.285,4.7357177734375C17.025,4.7357177734375,17.5175,5.2107178734375,17.5175,5.9232177734375C17.5175,6.6357176734375,16.901249999999997,7.1107177734375,16.285,7.1107177734375Z"
+                fill="#275EF4"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+            <g>
+              <path
+                d="M3.221240234375,9.48575399453125C2.728740214375,9.48575399453125,2.3587401843749998,9.36700439453125,1.989990234375,9.12950419453125L1.989990234375,13.04825489453125C1.989990234375,13.40450389453125,2.236240264375,13.76075589453125,2.606240154375,13.99825389453125L6.302490234375,16.13575589453125L6.302490234375,16.01700489453125C6.302490234375,15.66075289453125,6.426239934375,15.30450389453125,6.548739934375,14.94825589453125L3.221240234375,13.04825489453125L3.221240234375,9.48575399453125ZM16.777490234375,13.04825489453125L13.451239234375,14.82950489453125C13.573739234375,15.18575389453125,13.697489234375,15.54200589453125,13.697489234375,15.89825389453125L13.697489234375,16.01700489453125L17.393739234374998,13.87950289453125C17.763738234374998,13.64200489453125,18.011240234375,13.28575289453125,18.011240234375,12.92950389453125L18.011240234375,9.12950419453125C17.641239234375,9.24825379453125,17.148740234374998,9.36700339453125,16.777488234375,9.48575399453125L16.777490234375,13.04825489453125ZM6.424990134375,3.78575439453125L9.999990434375,1.76700439453125L13.449990234375,3.66700439453125C13.697490234375,3.31075449453125,14.067491234375,3.07325439453125,14.437490234375,2.83575439453125L10.614990234375,0.69825437653125C10.244989434375,0.57950438753125,9.752489534375,0.57950438753125,9.382489634375,0.69825437653125L5.438740034375,2.95450429453125C5.808740134375,3.07325409453125,6.178740034375,3.42950439453125,6.424990134375,3.78575439453125Z"
+                fill="#275EF4"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 50px; top: 499px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20">
+          <defs>
+            <clipPath id="master_svg0_3_554">
+              <rect x="0" y="0" width="20" height="20" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_554)">
+            <g>
+              <path
+                d="M11.147786115625,0.6430704564062499L17.950862515625,4.44076296640625C18.222703515625,4.59240626640625,18.389335515625,4.88105816640625,18.384708515625,5.19230126640625L18.384708515625,14.08691706640625C18.384628515625,14.91746906640625,17.923137515625,15.67920906640625,17.187016515625,16.06384006640625L11.033170715625,19.27922406640625C10.385965315625,19.61739706640625,9.614223515625,19.61739706640625,8.967017215624999,19.27922406640625L2.813170815625,16.06384006640625C2.077049285625,15.67920906640625,1.615559726954,14.91746906640625,1.615478515625,14.08691706640625L1.615478515625,5.19230126640625C1.615847915415,4.88720036640625,1.7804398856249999,4.60592456640625,2.046247695625,4.45614766640625L8.815478815625,0.6469170464062499C9.539204615625,0.23959240640625,10.422719915625,0.23813541640625,11.147786115625,0.6430704564062499ZM3.000093915625,11.15614706640625L3.000093915625,14.08691706640625C3.000093915625,14.40230206640625,3.175478615625,14.69076306640625,3.453940115625,14.83691806640625L9.404708815625,17.94614806640625L9.404708815625,14.55153306640625L3.000093915625,11.15614706640625ZM17.000094515625,11.39460806640625L10.635479015625,14.65614706640625L10.635479015625,17.92460806640625L16.545479515625,14.83691606640625C16.824863515624997,14.69108506640625,17.000051515625,14.40206906640625,17.000095515625,14.08691606640625L17.000094515625,11.39460806640625ZM17.000094515625,6.18845466640625L11.063171415625,9.53460886640625C10.927879315625,9.61084656640625,10.784740415625,9.67222876640625,10.636247615625,9.71768566640625L10.635479015625,13.27383906640625L17.000094515625,10.01230046640625L17.000094515625,6.18922426640625L17.000094515625,6.18845466640625ZM3.000093915625,6.19999316640625L3.000093915625,9.76153186640625L9.404709315625,13.15768506640625L9.404709315625,9.72614666640625C9.249324815625,9.67999366640625,9.097017315625,9.61768536640625,8.952402115625,9.53614716640625L3.000093915625,6.20076226640625L3.000093915625,6.19999316640625ZM9.646247815625,2.12076296640625L3.953939915625,5.32384016640625L9.553939815625,8.46230126640625C9.834812115625,8.62018106640625,10.177681915625,8.62018106640625,10.458555215625,8.46230126640625L16.044708515625,5.31383946640625L10.323169715625,2.11999346640625C10.112778615625,2.00239796640625,9.856370015625,2.00268936640625,9.646247815625,2.12076296640625Z"
+                fill="#11193C"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 50px; top: 573px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20">
+          <defs>
+            <clipPath id="master_svg0_3_558">
+              <rect x="0" y="0" width="20" height="20" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_558)">
+            <g>
+              <path
+                d="M18.16,1.75C18.209705,1.7500007,18.249998,1.7902946,18.25,1.84L18.25,15.559999C18.249996,15.609705,18.209703,15.65,18.16,15.65L1.84,15.65C1.7902942,15.649998,1.75,15.609704,1.75,15.559999L1.75,1.84C1.75,1.7902944,1.7902944,1.75,1.84,1.75L18.16,1.75ZM18.16,0L1.84,0C0.82379603,-1.2114096e-7,0,0.82379591,0,1.84L0,15.559999C0,16.576204,0.82379603,17.4,1.84,17.4L18.16,17.4C19.176205,17.4,20,16.576204,20,15.559999L20,1.84C20,0.82379603,19.176205,0,18.16,0ZM15.599999,19.125C15.599999,18.64175,15.208249,18.25,14.724999,18.25L5.2749996,18.25C4.7917504,18.25,4.3999996,18.64175,4.3999996,19.125C4.3999996,19.60825,4.7917504,20,5.2749996,20L14.724999,20C15.208249,20,15.599999,19.60825,15.599999,19.125ZM8.5999994,6.125001L13,8.6999998L8.5749998,11.254999L8.5749998,6.145M8.1949997,4.1099997C7.4383349,4.1209655,6.8338728,4.7433376,6.8449998,5.4999995L6.8449998,11.919999C6.844995,12.675825,7.4591789,13.287768,8.2149992,13.284999C8.4541779,13.285598,8.6890907,13.221687,8.8949995,13.099999L14.47,9.8849993C15.379982,9.3570461,15.379982,8.0429535,14.47,7.5149994L8.8950005,4.2950001C8.6881647,4.1755219,8.4538574,4.1117768,8.2150002,4.1100001L8.1949997,4.1099997Z"
+                fill="#11193C"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 280px; top: 200px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20">
+          <defs>
+            <clipPath id="master_svg0_3_562">
+              <rect x="0" y="0" width="20" height="20" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_562)">
+            <g>
+              <path
+                d="M9.4350795765625,13.954989417578124L10.0242452765625,14.544989617578125L18.1484109765625,6.423322717578125C18.4713519765625,6.097249517578125,18.4713519765625,5.571895957578125,18.1484109765625,5.245822787578125C17.8238009765625,4.918887734578125,17.2951499765625,4.918514013578125,16.9700779765625,5.244989517578125L10.0259113765625,12.186655517578124L3.0875782765624997,5.244988917578125C2.7630241765625003,4.918377518578125,2.2346324965625,4.918377518578125,1.9100784665625,5.244988917578125C1.5861260295625,5.570702667578125,1.5853820145625,6.096694017578125,1.9084117665625,6.423322117578125L9.4025783765625,13.920822117578124L9.435911176562499,13.954988517578125L9.4350795765625,13.954989417578124Z"
+                fill="#275EF4"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 280px; top: 519px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20">
+          <defs>
+            <clipPath id="master_svg0_3_965">
+              <rect x="0" y="20" width="20" height="20" rx="0" />
+            </clipPath>
+          </defs>
+          <g
+            transform="matrix(0,-1,1,0,-20,20)"
+            clip-path="url(#master_svg0_3_965)">
+            <g>
+              <path
+                d="M9.4350795765625,33.954989417578126L10.0242452765625,34.544989617578125L18.1484109765625,26.423322717578124C18.4713519765625,26.097249517578124,18.4713519765625,25.571895957578125,18.1484109765625,25.245822787578124C17.8238009765625,24.918887734578124,17.2951499765625,24.918514013578125,16.9700779765625,25.244989517578126L10.0259113765625,32.186655517578124L3.0875782765624997,25.244988917578127C2.7630241765625003,24.918377518578126,2.2346324965625,24.918377518578126,1.9100784665625,25.244988917578127C1.5861260295625,25.570702667578125,1.5853820145625,26.096694017578123,1.9084117665625,26.423322117578124L9.4025783765625,33.920822117578126L9.435911176562499,33.95498851757812L9.4350795765625,33.954989417578126Z"
+                fill="#11193C"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 280px; top: 593px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20">
+          <defs>
+            <clipPath id="master_svg0_3_967">
+              <rect x="0" y="20" width="20" height="20" rx="0" />
+            </clipPath>
+          </defs>
+          <g
+            transform="matrix(0,-1,1,0,-20,20)"
+            clip-path="url(#master_svg0_3_967)">
+            <g>
+              <path
+                d="M9.4350795765625,33.954989417578126L10.0242452765625,34.544989617578125L18.1484109765625,26.423322717578124C18.4713519765625,26.097249517578124,18.4713519765625,25.571895957578125,18.1484109765625,25.245822787578124C17.8238009765625,24.918887734578124,17.2951499765625,24.918514013578125,16.9700779765625,25.244989517578126L10.0259113765625,32.186655517578124L3.0875782765624997,25.244988917578127C2.7630241765625003,24.918377518578126,2.2346324965625,24.918377518578126,1.9100784665625,25.244988917578127C1.5861260295625,25.570702667578125,1.5853820145625,26.096694017578123,1.9084117665625,26.423322117578124L9.4025783765625,33.920822117578126L9.435911176562499,33.95498851757812L9.4350795765625,33.954989417578126Z"
+                fill="#11193C"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <span
+        style="color: #11193C; font-size: 20px; font-family: AlibabaPuHuiTi; line-height: 27px; position: absolute; left: 80px; top: 267px">
+        LLM预训练/微调
+      </span>
+      <span
+        style="color: #11193C; font-size: 20px; font-family: AlibabaPuHuiTi; line-height: 27px; position: absolute; left: 80px; top: 337px">
+        LLM人类对齐
+      </span>
+      <span
+        style="color: #11193C; font-size: 20px; font-family: AlibabaPuHuiTi; line-height: 27px; position: absolute; left: 80px; top: 407px">
+        LLM GRPO
+      </span>
+      <div
+        style="position: absolute; left: 95.42%; right: 3.75%; top: 11.76%; bottom: 87.13%">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="12"
+          viewBox="0 0 16 12">
+          <g>
+            <path
+              d="M15.645429,0.45282978C15.379501,0.1132069,15.024928,0,14.67036,0L1.373961,0.11320798C1.0193907,0.11320798,0.66481954,0.22641596,0.39889178,0.56603777C-0.13296407,1.2452835,-0.13296407,2.2641511,0.39889178,2.9433968L7.047091,11.433963C7.1357331,11.547171,7.3130198,11.660379,7.4016604,11.773585C7.4016604,11.773585,7.490303,11.886792,7.490303,11.886792C7.933517,12.113209,8.5540161,12,8.9085865,11.547171L15.556786,2.9433968C16.177284,2.150943,16.088644,1.1320755,15.645429,0.45282978Z"
+              fill="#11193C"
+              fill-opacity="1"
+              style="mix-blend-mode:passthrough" />
+          </g>
+        </svg>
+      </div>
+      <div
+        style="position: absolute; left: 95.42%; right: 3.75%; top: 37.22%; bottom: 61.67%">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="12"
+          viewBox="0 0 16 12">
+          <g>
+            <path
+              d="M15.645429,0.45282978C15.379501,0.1132069,15.024928,0,14.67036,0L1.373961,0.11320798C1.0193907,0.11320798,0.66481954,0.22641596,0.39889178,0.56603777C-0.13296407,1.2452835,-0.13296407,2.2641511,0.39889178,2.9433968L7.047091,11.433963C7.1357331,11.547171,7.3130198,11.660379,7.4016604,11.773585C7.4016604,11.773585,7.490303,11.886792,7.490303,11.886792C7.933517,12.113209,8.5540161,12,8.9085865,11.547171L15.556786,2.9433968C16.177284,2.150943,16.088644,1.1320755,15.645429,0.45282978Z"
+              fill="#11193C"
+              fill-opacity="1"
+              style="mix-blend-mode:passthrough" />
+          </g>
+        </svg>
+      </div>
+      <div
+        style="width: 305px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 430px; top: 213px"></div>
+      <div
+        style="width: 176px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 430px; top: 788px"></div>
+      <div
+        style="width: 422px; height: 155px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 430px; top: 488px"></div>
+      <div
+        style="width: 366px; height: 30px; flex: none; background: #DDE3ED; border-radius: 95px; position: absolute; left: 435px; top: 493px"></div>
+      <div
+        style="width: 317px; height: 30px; flex: none; background: #DDE3ED; border-radius: 95px; position: absolute; left: 435px; top: 531px"></div>
+      <div
+        style="width: 252px; height: 30px; flex: none; background: #DDE3ED; border-radius: 95px; position: absolute; left: 435px; top: 569px"></div>
+      <div
+        style="width: 322px; height: 30px; flex: none; background: #DDE3ED; border-radius: 95px; position: absolute; left: 435px; top: 607px"></div>
+      <div
+        style="width: 1418px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 430px; top: 304px"></div>
+      <div
+        style="width: 305px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 764px; top: 213px"></div>
+      <div
+        style="width: 290px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 624px; top: 788px"></div>
+      <div
+        style="width: 305px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 1098px; top: 213px"></div>
+      <div
+        style="width: 265px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 940px; top: 788px"></div>
+      <div
+        style="width: 73px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 893px; top: 488px"></div>
+      <div
+        style="width: 73px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 1255px; top: 488px"></div>
+      <div
+        style="width: 243px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 1432px; top: 213px"></div>
+      <div
+        style="width: 243px; height: 36px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 4px; position: absolute; left: 1230px; top: 788px"></div>
+      <div
+        style="width: 144px; height: 71px; flex: none; background: #F6F9FC; border-style: solid; border-color: #11193C; border-width: 0.5px; border-radius: 6px; position: absolute; left: 1704px; top: 178px"></div>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 440px; top: 218px">
+        Qwen/Qwen2.5-7B-Instruct
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 440px; top: 793px">
+        sft
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 445px; top: 496px">
+        Al-mode.Scope/alpaca-gpt4-data-zh
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 445px; top: 534px">
+        AI-modelScope/LongAlpaca-12k
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 445px; top: 572px">
+        AI-modelScope/ruozhiba
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 445px; top: 610px">
+        AI-modeLScope/math-trn-format
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 440px; top: 310px">
+        you are uen, created by Alibaba Cloud. you are a helpful assistant.
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 774px; top: 218px">
+        qwen2_5
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 634px; top: 793px">
+        Lora
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1108px; top: 218px">
+        qwen2_5
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 950px; top: 793px">
+        42
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1240px; top: 793px">
+        bfloatl6
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 903px; top: 494px">
+        0
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1265px; top: 494px">
+        32
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 893px; top: 533px">
+        0
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1255px; top: 533px">
+        32
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1212px; top: 533px">
+        1
+      </span>
+      <span
+        style="color: rgba(0,0,0,0.85); font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1514px; top: 533px">
+        32768
+      </span>
+      <div style="position: absolute; left: 714px; top: 236px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 584px; top: 811px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 830px; top: 513px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 945px; top: 517px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1307px; top: 517px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 945px; top: 496px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g>
+            <path
+              d="M6,7.1054275e-16L11.196152,7.5L0.80384761,7.5L6,7.1054275e-16Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1307px; top: 496px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g>
+            <path
+              d="M6,7.1054275e-16L11.196152,7.5L0.80384761,7.5L6,7.1054275e-16Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1048px; top: 236px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 892px; top: 811px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1382px; top: 236px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1649px; top: 236px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1448px; top: 811px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="12"
+          height="10"
+          viewBox="0 0 12 10">
+          <g transform="matrix(1,0,0,-1,0,20)">
+            <path
+              d="M6,10L11.196152,17.5L0.80384761,17.5L6,10Z"
+              fill="#000000"
+              fill-opacity="0.8500000238418579" />
+          </g>
+        </svg>
+      </div>
+      <span
+        style="color: #11193C; font-size: 18px; font-family: AlibabaPuHuiTi; line-height: 25px; position: absolute; left: 1723px; top: 201px">
+        删除训练记录
+      </span>
+      <div style="position: absolute; left: 777px; top: 500px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_570">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_570)">
+            <g>
+              <path
+                d="M8.0000405234375,1.33331298828125C11.6818740234375,1.33331298828125,14.6667070234375,4.318146188281251,14.6667070234375,7.99997948828125C14.6667070234375,11.68181298828125,11.6818740234375,14.66664698828125,8.0000405234375,14.66664698828125C4.318207223437501,14.66664698828125,1.3333740234375,11.68181298828125,1.3333740234375,7.99997948828125C1.3333740234375,4.318146188281251,4.318207223437501,1.33331298828125,8.0000405234375,1.33331298828125ZM6.6488738234375,5.97331288828125C6.4627938234375,5.78416968828125,6.1582241234375,5.78292658828125,5.9706058234375,5.97054478828125C5.7829876234375,6.15816308828125,5.7842307234375,6.46273278828125,5.9733739234375,6.64881278828125L7.3245406234375,7.99997948828125L5.9733739234375,9.35114668828125C5.7842164234375,9.53722568828125,5.7829666234375,9.84180738828125,5.9705906234375,10.02943038828125C6.1582145234375,10.21705438828125,6.4627962234375,10.21580408828125,6.6488738234375,10.02664658828125L8.0000405234375,8.67547938828125L9.3512077234375,10.02664658828125C9.5372839234375,10.21581558828125,9.8418760234375,10.21707148828125,10.0295038234375,10.02944278828125C10.2171325234375,9.84181408828125,10.2158766234375,9.53722288828125,10.0267076234375,9.35114668828125L8.6755404234375,7.99997948828125L10.0267076234375,6.64881278828125C10.2158651234375,6.46273468828125,10.2171144234375,6.15815348828125,10.0294914234375,5.97052958828125C9.8418684234375,5.78290558828125,9.5372867234375,5.78415538828125,9.3512077234375,5.97331288828125L8.0000405234375,7.32447958828125L6.6488738234375,5.97331288828125Z"
+                fill="#000000"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 729px; top: 538px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_0430">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_0430)">
+            <g>
+              <path
+                d="M8.0000405234375,1.33331298828125C11.6818740234375,1.33331298828125,14.6667070234375,4.318146188281251,14.6667070234375,7.99997948828125C14.6667070234375,11.68181298828125,11.6818740234375,14.66664698828125,8.0000405234375,14.66664698828125C4.318207223437501,14.66664698828125,1.3333740234375,11.68181298828125,1.3333740234375,7.99997948828125C1.3333740234375,4.318146188281251,4.318207223437501,1.33331298828125,8.0000405234375,1.33331298828125ZM6.6488738234375,5.97331288828125C6.4627938234375,5.78416968828125,6.1582241234375,5.78292658828125,5.9706058234375,5.97054478828125C5.7829876234375,6.15816308828125,5.7842307234375,6.46273278828125,5.9733739234375,6.64881278828125L7.3245406234375,7.99997948828125L5.9733739234375,9.35114668828125C5.7842164234375,9.53722568828125,5.7829666234375,9.84180738828125,5.9705906234375,10.02943038828125C6.1582145234375,10.21705438828125,6.4627962234375,10.21580408828125,6.6488738234375,10.02664658828125L8.0000405234375,8.67547938828125L9.3512077234375,10.02664658828125C9.5372839234375,10.21581558828125,9.8418760234375,10.21707148828125,10.0295038234375,10.02944278828125C10.2171325234375,9.84181408828125,10.2158766234375,9.53722288828125,10.0267076234375,9.35114668828125L8.6755404234375,7.99997948828125L10.0267076234375,6.64881278828125C10.2158651234375,6.46273468828125,10.2171144234375,6.15815348828125,10.0294914234375,5.97052958828125C9.8418684234375,5.78290558828125,9.5372867234375,5.78415538828125,9.3512077234375,5.97331288828125L8.0000405234375,7.32447958828125L6.6488738234375,5.97331288828125Z"
+                fill="#000000"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 665px; top: 576px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_0443">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_0443)">
+            <g>
+              <path
+                d="M8.0000405234375,1.33331298828125C11.6818740234375,1.33331298828125,14.6667070234375,4.318146188281251,14.6667070234375,7.99997948828125C14.6667070234375,11.68181298828125,11.6818740234375,14.66664698828125,8.0000405234375,14.66664698828125C4.318207223437501,14.66664698828125,1.3333740234375,11.68181298828125,1.3333740234375,7.99997948828125C1.3333740234375,4.318146188281251,4.318207223437501,1.33331298828125,8.0000405234375,1.33331298828125ZM6.6488738234375,5.97331288828125C6.4627938234375,5.78416968828125,6.1582241234375,5.78292658828125,5.9706058234375,5.97054478828125C5.7829876234375,6.15816308828125,5.7842307234375,6.46273278828125,5.9733739234375,6.64881278828125L7.3245406234375,7.99997948828125L5.9733739234375,9.35114668828125C5.7842164234375,9.53722568828125,5.7829666234375,9.84180738828125,5.9705906234375,10.02943038828125C6.1582145234375,10.21705438828125,6.4627962234375,10.21580408828125,6.6488738234375,10.02664658828125L8.0000405234375,8.67547938828125L9.3512077234375,10.02664658828125C9.5372839234375,10.21581558828125,9.8418760234375,10.21707148828125,10.0295038234375,10.02944278828125C10.2171325234375,9.84181408828125,10.2158766234375,9.53722288828125,10.0267076234375,9.35114668828125L8.6755404234375,7.99997948828125L10.0267076234375,6.64881278828125C10.2158651234375,6.46273468828125,10.2171144234375,6.15815348828125,10.0294914234375,5.97052958828125C9.8418684234375,5.78290558828125,9.5372867234375,5.78415538828125,9.3512077234375,5.97331288828125L8.0000405234375,7.32447958828125L6.6488738234375,5.97331288828125Z"
+                fill="#000000"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 736px; top: 614px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_0451">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_0451)">
+            <g>
+              <path
+                d="M8.0000405234375,1.33331298828125C11.6818740234375,1.33331298828125,14.6667070234375,4.318146188281251,14.6667070234375,7.99997948828125C14.6667070234375,11.68181298828125,11.6818740234375,14.66664698828125,8.0000405234375,14.66664698828125C4.318207223437501,14.66664698828125,1.3333740234375,11.68181298828125,1.3333740234375,7.99997948828125C1.3333740234375,4.318146188281251,4.318207223437501,1.33331298828125,8.0000405234375,1.33331298828125ZM6.6488738234375,5.97331288828125C6.4627938234375,5.78416968828125,6.1582241234375,5.78292658828125,5.9706058234375,5.97054478828125C5.7829876234375,6.15816308828125,5.7842307234375,6.46273278828125,5.9733739234375,6.64881278828125L7.3245406234375,7.99997948828125L5.9733739234375,9.35114668828125C5.7842164234375,9.53722568828125,5.7829666234375,9.84180738828125,5.9705906234375,10.02943038828125C6.1582145234375,10.21705438828125,6.4627962234375,10.21580408828125,6.6488738234375,10.02664658828125L8.0000405234375,8.67547938828125L9.3512077234375,10.02664658828125C9.5372839234375,10.21581558828125,9.8418760234375,10.21707148828125,10.0295038234375,10.02944278828125C10.2171325234375,9.84181408828125,10.2158766234375,9.53722288828125,10.0267076234375,9.35114668828125L8.6755404234375,7.99997948828125L10.0267076234375,6.64881278828125C10.2158651234375,6.46273468828125,10.2171144234375,6.15815348828125,10.0294914234375,5.97052958828125C9.8418684234375,5.78290558828125,9.5372867234375,5.78415538828125,9.3512077234375,5.97331288828125L8.0000405234375,7.32447958828125L6.6488738234375,5.97331288828125Z"
+                fill="#000000"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 808px; top: 500px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_574">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_574)">
+            <g>
+              <path
+                d="M3.5625,6.015625L3.5625,13.6528435C3.5625,14.1112815,3.9379687,14.4843745,4.4028749000000005,14.4843745L11.597125,14.4843745C12.062031,14.4843745,12.4375,14.1112965,12.4375,13.6528435L12.4375,6.015625L3.5625,6.015625ZM13.5625,6.015625L13.5625,13.6528435C13.5625,14.7342185,12.681781,15.6093745,11.597125,15.6093745L4.4028749000000005,15.6093745C3.3182187,15.6093745,2.4375,14.7342185,2.4375,13.6528435L2.4375,6.015625L1.359375,6.015625C1.04871869,6.015625,0.796875,5.7637811,0.796875,5.453125L0.796875,4.9285154C0.796875,4.3247342,1.03065622,3.7085624,1.4423437099999998,3.2407031C1.8976718,2.7232656,2.5347188000000003,2.421875,3.2592657,2.421875L12.745875,2.421875C13.470673,2.421875,14.106719,2.7214687,14.560375,3.237453C14.971109,3.7046249,15.203125,4.3207812,15.203125,4.9285154L15.203125,5.453125C15.203125,5.7637811,14.951282,6.015625,14.640625,6.015625L13.5625,6.015625ZM5.5,1.8515625C5.1893439,1.8515625,4.9375,1.5997188100000002,4.9375,1.2890625C4.9375,0.9784061900000001,5.1893439,0.7265625,5.5,0.7265625L10.5,0.7265625C10.810657,0.7265625,11.0625,0.9784062499999999,11.0625,1.2890625C11.0625,1.5997188100000002,10.810657,1.8515625,10.5,1.8515625L5.5,1.8515625ZM13.715485,3.9802814C13.471406,3.7026563,13.140672,3.546875,12.745875,3.546875L3.2592657,3.546875C2.8653908,3.546875,2.5331719,3.7040625,2.2869219999999997,3.9838905C2.0643282000000003,4.2368593,1.9322345,4.5722499,1.9224532,4.890625L14.077562,4.890625C14.068,4.5676093,13.936891,4.2321095,13.715485,3.9802814ZM5.2578125,8.25C5.2578125,7.9393439,5.5096564,7.6875,5.8203125,7.6875C6.1309686,7.6875,6.3828125,7.9393439,6.3828125,8.25L6.3828125,12.3593745C6.3828125,12.6700315,6.1309686,12.9218745,5.8203125,12.9218745C5.5096564,12.9218745,5.2578125,12.6700315,5.2578125,12.3593745L5.2578125,8.25ZM7.4453125,8.25C7.4453125,7.9393439,7.6971564,7.6875,8.0078125,7.6875C8.3184681,7.6875,8.5703125,7.9393439,8.5703125,8.25L8.5703125,12.3593745C8.5703125,12.6700315,8.318469,12.9218745,8.0078125,12.9218745C7.697156,12.9218745,7.4453125,12.6700315,7.4453125,12.3593745L7.4453125,8.25ZM9.6328125,8.25C9.6328125,7.9393439,9.884656,7.6875,10.1953125,7.6875C10.505969,7.6875,10.7578125,7.9393439,10.7578125,8.25L10.7578125,12.3593745C10.7578125,12.6700315,10.505969,12.9218745,10.1953125,12.9218745C9.884656,12.9218745,9.6328125,12.6700315,9.6328125,12.3593745L9.6328125,8.25Z"
+                fill="#000000"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        style="width: 294px; height: 8px; flex: none; background: #DDE3ED; border-radius: 311px; position: absolute; left: 911px; top: 542px"></div>
+      <div
+        style="width: 220px; height: 8px; flex: none; background: #DDE3ED; border-radius: 311px; position: absolute; left: 1287px; top: 542px"></div>
+      <div
+        style="width: 29px; height: 8px; flex: none; background: #11193C; border-radius: 262px; position: absolute; left: 907px; top: 542px"></div>
+      <div
+        style="width: 29px; height: 8px; flex: none; background: #11193C; border-radius: 262px; position: absolute; left: 1283px; top: 542px"></div>
+      <div style="position: absolute; left: 927px; top: 537px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18">
+          <g>
+            <ellipse
+              cx="9"
+              cy="9"
+              rx="9"
+              ry="9"
+              fill="#F6F9FC"
+              fill-opacity="1" />
+            <path
+              d="M18,9Q18,9.2209377,17.989159,9.4416094Q17.978317,9.662281,17.956663,9.8821554Q17.935007,10.102028,17.902588,10.320575Q17.870171,10.53912,17.827066,10.755813Q17.783962,10.972505,17.73028,11.186821Q17.676598,11.401138,17.612463,11.612562Q17.548328,11.823986,17.473896,12.032008Q17.399464,12.24003,17.314915,12.44415Q17.230364,12.64827,17.1359,12.847996Q17.041439,13.047721,16.93729,13.242571Q16.833141,13.43742,16.719555,13.626925Q16.605972,13.816429,16.483225,14.000132Q16.360477,14.183834,16.228865,14.361293Q16.097254,14.538752,15.957092,14.709539Q15.816931,14.880326,15.668558,15.04403Q15.520185,15.207733,15.36396,15.36396Q15.207733,15.520185,15.04403,15.668559Q14.880326,15.816931,14.709539,15.957093Q14.538752,16.097254,14.361293,16.228867Q14.183834,16.360477,14.000132,16.483225Q13.816429,16.605972,13.626925,16.719555Q13.43742,16.833141,13.24257,16.93729Q13.04772,17.041439,12.847995,17.1359Q12.64827,17.230364,12.444149,17.314915Q12.240029,17.399464,12.032007,17.473896Q11.823986,17.548328,11.612562,17.612463Q11.401138,17.676598,11.186821,17.730282Q10.972504,17.783964,10.755812,17.827068Q10.53912,17.870171,10.320574,17.902588Q10.102028,17.935007,9.8821545,17.956663Q9.662281,17.978317,9.4416094,17.989159Q9.2209377,18,9,18Q8.7790623,18,8.5583916,17.989159Q8.337719,17.978317,8.1178455,17.956663Q7.8979716,17.935007,7.6794257,17.902588Q7.4608793,17.870171,7.2441869,17.827066Q7.0274944,17.783962,6.8131781,17.73028Q6.5988617,17.676598,6.3874383,17.612463Q6.1760139,17.548328,5.9679914,17.473896Q5.7599688,17.399464,5.5558491,17.314915Q5.3517294,17.230364,5.1520038,17.1359Q4.9522791,17.041439,4.7574296,16.93729Q4.5625796,16.833141,4.373075,16.719555Q4.1835704,16.605972,3.9998674,16.483225Q3.8161645,16.360477,3.638706,16.228865Q3.4612472,16.097254,3.2904601,15.957092Q3.1196733,15.816931,2.9559693,15.668558Q2.7922654,15.520185,2.6360388,15.36396Q2.4798124,15.207733,2.3314397,15.04403Q2.1830673,14.880326,2.042906,14.709539Q1.9027445,14.538752,1.7711321,14.361293Q1.6395197,14.183834,1.5167732,14.000132Q1.394027,13.816429,1.2804424,13.626925Q1.1668577,13.43742,1.0627085,13.24257Q0.95855922,13.04772,0.86409616,12.847995Q0.76963323,12.64827,0.6850841,12.444149Q0.60053492,12.240029,0.52610332,12.032007Q0.45167172,11.823986,0.38753694,11.612562Q0.32340217,11.401138,0.26971871,11.186821Q0.21603525,10.972504,0.17293245,10.755812Q0.12982966,10.53912,0.097411394,10.320574Q0.064993128,10.102028,0.043337457,9.8821545Q0.021681786,9.662281,0.010840893,9.4416094Q0,9.2209377,0,9Q0,8.7790623,0.010840893,8.5583916Q0.021681786,8.337719,0.043337457,8.1178455Q0.064993128,7.8979716,0.097411394,7.6794257Q0.12982966,7.4608793,0.17293245,7.2441869Q0.21603525,7.0274944,0.26971871,6.8131781Q0.32340217,6.5988617,0.38753694,6.3874383Q0.45167172,6.1760139,0.52610338,5.9679914Q0.60053492,5.7599688,0.6850841,5.5558491Q0.76963323,5.3517294,0.86409622,5.1520038Q0.95855927,4.9522791,1.0627086,4.7574296Q1.1668578,4.5625796,1.2804425,4.373075Q1.394027,4.1835704,1.5167733,3.9998674Q1.6395197,3.8161645,1.771132,3.638706Q1.9027444,3.4612472,2.0429058,3.2904601Q2.1830671,3.1196733,2.3314397,2.9559693Q2.4798124,2.7922654,2.6360388,2.6360388Q2.7922654,2.4798124,2.9559693,2.3314397Q3.1196733,2.1830673,3.2904601,2.042906Q3.4612472,1.9027445,3.6387057,1.7711321Q3.8161645,1.6395197,3.9998674,1.5167732Q4.1835699,1.394027,4.3730745,1.2804424Q4.5625792,1.1668577,4.7574291,1.0627085Q4.9522781,0.95855922,5.1520033,0.86409616Q5.3517284,0.76963323,5.5558486,0.6850841Q5.7599683,0.60053492,5.9679909,0.52610332Q6.1760139,0.45167172,6.3874383,0.38753694Q6.5988617,0.32340217,6.8131781,0.26971871Q7.0274944,0.21603525,7.2441869,0.17293245Q7.4608793,0.12982966,7.6794257,0.097411394Q7.8979721,0.064993128,8.1178465,0.043337457Q8.3377199,0.021681786,8.5583916,0.010840893Q8.7790623,0,9,0Q9.2209377,0,9.4416094,0.010840893Q9.662281,0.021681786,9.8821554,0.043337457Q10.102028,0.064993128,10.320575,0.097411394Q10.53912,0.12982966,10.755813,0.17293245Q10.972505,0.21603525,11.186821,0.26971871Q11.401138,0.32340217,11.612562,0.38753694Q11.823986,0.45167172,12.032008,0.52610338Q12.24003,0.60053492,12.44415,0.6850841Q12.64827,0.76963323,12.847996,0.86409622Q13.047721,0.95855927,13.242571,1.0627086Q13.43742,1.1668578,13.626925,1.2804425Q13.816429,1.394027,14.000132,1.5167733Q14.183834,1.6395197,14.361293,1.771132Q14.538752,1.9027444,14.709539,2.0429058Q14.880326,2.1830671,15.04403,2.3314397Q15.207733,2.4798124,15.36396,2.6360388Q15.520185,2.7922654,15.668559,2.9559693Q15.816931,3.1196733,15.957093,3.2904601Q16.097254,3.4612472,16.228867,3.6387057Q16.360477,3.8161645,16.483225,3.9998674Q16.605972,4.1835699,16.719555,4.3730745Q16.833141,4.5625792,16.93729,4.7574291Q17.041439,4.9522781,17.1359,5.1520033Q17.230364,5.3517284,17.314915,5.5558486Q17.399464,5.7599683,17.473896,5.9679909Q17.548328,6.1760139,17.612463,6.3874383Q17.676598,6.5988617,17.730282,6.8131781Q17.783964,7.0274944,17.827068,7.2441869Q17.870171,7.4608793,17.902588,7.6794257Q17.935007,7.8979721,17.956663,8.1178465Q17.978317,8.3377199,17.989159,8.5583916Q18,8.7790623,18,9ZM16,9Q16,8.8281593,15.991568,8.6565266Q15.983136,8.4848938,15.966293,8.3138809Q15.94945,8.1428671,15.924235,7.9728866Q15.899021,7.802906,15.865496,7.634367Q15.83197,7.4658284,15.790217,7.2991381Q15.748464,7.1324477,15.698582,6.9680071Q15.648699,6.803566,15.590807,6.6417704Q15.532915,6.4799747,15.467155,6.3212152Q15.401394,6.1624556,15.327925,6.0071135Q15.254454,5.8517723,15.173449,5.700223Q15.092443,5.5486732,15.004099,5.4012809Q14.915755,5.2538881,14.820286,5.1110082Q14.724816,4.9681282,14.622452,4.8301048Q14.520086,4.6920815,14.411072,4.559247Q14.302057,4.4264126,14.186657,4.2990875Q14.071255,4.171762,13.949746,4.0502524Q13.828236,3.9287429,13.700912,3.8133421Q13.573586,3.6979408,13.440752,3.5889266Q13.307917,3.4799123,13.169893,3.377547Q13.03187,3.2751818,12.888989,3.1797123Q12.746109,3.0842428,12.598717,2.9958992Q12.451325,2.9075558,12.299776,2.826551Q12.148226,2.7455459,11.992885,2.6720748Q11.837543,2.5986037,11.678782,2.5328431Q11.520023,2.4670827,11.358228,2.4091916Q11.196433,2.3513002,11.031992,2.3014178Q10.86755,2.2515352,10.700859,2.2097812Q10.534169,2.1680274,10.365631,2.1345029Q10.197094,2.1009784,10.027113,2.0757642Q9.8571329,2.0505502,9.68612,2.0337071Q9.5151072,2.0168636,9.3434744,2.0084319Q9.1718407,2,9,2Q8.8281593,2,8.6565266,2.0084319Q8.4848938,2.0168636,8.3138809,2.0337071Q8.1428671,2.0505502,7.9728866,2.0757644Q7.802906,2.1009784,7.634367,2.1345029Q7.4658284,2.1680274,7.2991381,2.2097814Q7.1324477,2.2515352,6.9680071,2.3014178Q6.803566,2.3513002,6.6417704,2.4091916Q6.4799747,2.4670827,6.3212152,2.5328431Q6.1624556,2.5986037,6.0071135,2.6720748Q5.8517723,2.7455461,5.700223,2.8265512Q5.5486732,2.9075561,5.4012809,2.9958994Q5.2538881,3.0842428,5.1110082,3.1797123Q4.9681282,3.2751818,4.8301048,3.3775468Q4.6920815,3.479912,4.559247,3.5889266Q4.4264126,3.6979408,4.2990875,3.8133416Q4.171762,3.9287424,4.0502524,4.050252Q3.9287429,4.1717615,3.8133421,4.299087Q3.6979408,4.4264121,3.5889266,4.5592465Q3.4799123,4.6920805,3.377547,4.8301044Q3.2751818,4.9681273,3.1797123,5.1110077Q3.0842428,5.2538877,2.9958992,5.4012799Q2.9075558,5.5486727,2.826551,5.7002225Q2.7455459,5.8517723,2.6720748,6.0071135Q2.5986037,6.1624556,2.5328431,6.3212156Q2.4670825,6.4799752,2.4091914,6.6417704Q2.3513002,6.803566,2.3014176,6.9680071Q2.2515349,7.1324482,2.2097812,7.2991385Q2.1680274,7.4658289,2.1345029,7.6343675Q2.1009784,7.802906,2.0757642,7.9728866Q2.0505502,8.1428671,2.0337071,8.31388Q2.0168636,8.4848928,2.0084319,8.6565266Q2,8.8281593,2,9Q2,9.1718407,2.0084319,9.3434734Q2.0168636,9.5151072,2.0337071,9.68612Q2.0505502,9.8571329,2.0757644,10.027113Q2.1009784,10.197094,2.1345029,10.365631Q2.1680274,10.534169,2.2097812,10.70086Q2.2515349,10.86755,2.3014176,11.031992Q2.3513,11.196433,2.4091911,11.358229Q2.4670825,11.520023,2.5328429,11.678782Q2.5986032,11.837543,2.6720748,11.992884Q2.7455459,12.148226,2.826551,12.299776Q2.9075556,12.451325,2.9958992,12.598719Q3.0842428,12.74611,3.1797121,12.88899Q3.2751815,13.03187,3.3775468,13.169893Q3.4799118,13.307917,3.5889263,13.440752Q3.6979406,13.573586,3.8133416,13.700912Q3.9287424,13.828237,4.050252,13.949747Q4.1717615,14.071257,4.299087,14.186658Q4.4264121,14.302059,4.5592465,14.411074Q4.6920805,14.520086,4.8301044,14.622452Q4.9681273,14.724816,5.1110077,14.820286Q5.2538877,14.915755,5.4012799,15.004099Q5.5486727,15.092443,5.7002225,15.173449Q5.8517723,15.254454,6.0071135,15.327924Q6.1624556,15.401395,6.3212156,15.467155Q6.4799752,15.532916,6.6417704,15.590808Q6.803566,15.648699,6.9680071,15.698582Q7.1324482,15.748465,7.2991385,15.790217Q7.4658289,15.831971,7.6343675,15.865496Q7.802906,15.899021,7.9728866,15.924235Q8.1428671,15.94945,8.31388,15.966293Q8.4848928,15.983136,8.6565266,15.991568Q8.8281593,16,9,16Q9.1718407,16,9.3434734,15.991568Q9.5151072,15.983136,9.68612,15.966293Q9.8571329,15.94945,10.027113,15.924235Q10.197094,15.899021,10.365631,15.865496Q10.534169,15.83197,10.70086,15.790217Q10.86755,15.748464,11.031992,15.698582Q11.196433,15.648699,11.358229,15.590807Q11.520023,15.532915,11.678782,15.467155Q11.837543,15.401394,11.992884,15.327925Q12.148226,15.254454,12.299776,15.173449Q12.451325,15.092443,12.598719,15.004099Q12.74611,14.915755,12.88899,14.820286Q13.03187,14.724816,13.169893,14.622452Q13.307917,14.520086,13.440752,14.411072Q13.573586,14.302057,13.700912,14.186657Q13.828237,14.071255,13.949747,13.949746Q14.071257,13.828236,14.186658,13.700912Q14.302059,13.573586,14.411074,13.440752Q14.520086,13.307917,14.622452,13.169893Q14.724816,13.03187,14.820286,12.888989Q14.915755,12.746109,15.004099,12.598717Q15.092443,12.451325,15.173449,12.299776Q15.254454,12.148226,15.327924,11.992885Q15.401395,11.837543,15.467155,11.678782Q15.532916,11.520023,15.590808,11.358228Q15.648699,11.196433,15.698582,11.031992Q15.748465,10.86755,15.790217,10.700859Q15.831971,10.534169,15.865496,10.365631Q15.899021,10.197094,15.924235,10.027113Q15.94945,9.8571329,15.966293,9.68612Q15.983136,9.5151072,15.991568,9.3434744Q16,9.1718407,16,9Z"
+              fill="#11193C"
+              fill-opacity="1" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1303px; top: 537px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18">
+          <g>
+            <ellipse
+              cx="9"
+              cy="9"
+              rx="9"
+              ry="9"
+              fill="#F6F9FC"
+              fill-opacity="1" />
+            <path
+              d="M18,9Q18,9.2209377,17.989159,9.4416094Q17.978317,9.662281,17.956663,9.8821554Q17.935007,10.102028,17.902588,10.320575Q17.870171,10.53912,17.827066,10.755813Q17.783962,10.972505,17.73028,11.186821Q17.676598,11.401138,17.612463,11.612562Q17.548328,11.823986,17.473896,12.032008Q17.399464,12.24003,17.314915,12.44415Q17.230364,12.64827,17.1359,12.847996Q17.041439,13.047721,16.93729,13.242571Q16.833141,13.43742,16.719555,13.626925Q16.605972,13.816429,16.483225,14.000132Q16.360477,14.183834,16.228865,14.361293Q16.097254,14.538752,15.957092,14.709539Q15.816931,14.880326,15.668558,15.04403Q15.520185,15.207733,15.36396,15.36396Q15.207733,15.520185,15.04403,15.668559Q14.880326,15.816931,14.709539,15.957093Q14.538752,16.097254,14.361293,16.228867Q14.183834,16.360477,14.000132,16.483225Q13.816429,16.605972,13.626925,16.719555Q13.43742,16.833141,13.24257,16.93729Q13.04772,17.041439,12.847995,17.1359Q12.64827,17.230364,12.444149,17.314915Q12.240029,17.399464,12.032007,17.473896Q11.823986,17.548328,11.612562,17.612463Q11.401138,17.676598,11.186821,17.730282Q10.972504,17.783964,10.755812,17.827068Q10.53912,17.870171,10.320574,17.902588Q10.102028,17.935007,9.8821545,17.956663Q9.662281,17.978317,9.4416094,17.989159Q9.2209377,18,9,18Q8.7790623,18,8.5583916,17.989159Q8.337719,17.978317,8.1178455,17.956663Q7.8979716,17.935007,7.6794257,17.902588Q7.4608793,17.870171,7.2441869,17.827066Q7.0274944,17.783962,6.8131781,17.73028Q6.5988617,17.676598,6.3874383,17.612463Q6.1760139,17.548328,5.9679914,17.473896Q5.7599688,17.399464,5.5558491,17.314915Q5.3517294,17.230364,5.1520038,17.1359Q4.9522791,17.041439,4.7574296,16.93729Q4.5625796,16.833141,4.373075,16.719555Q4.1835704,16.605972,3.9998674,16.483225Q3.8161645,16.360477,3.638706,16.228865Q3.4612472,16.097254,3.2904601,15.957092Q3.1196733,15.816931,2.9559693,15.668558Q2.7922654,15.520185,2.6360388,15.36396Q2.4798124,15.207733,2.3314397,15.04403Q2.1830673,14.880326,2.042906,14.709539Q1.9027445,14.538752,1.7711321,14.361293Q1.6395197,14.183834,1.5167732,14.000132Q1.394027,13.816429,1.2804424,13.626925Q1.1668577,13.43742,1.0627085,13.24257Q0.95855922,13.04772,0.86409616,12.847995Q0.76963323,12.64827,0.6850841,12.444149Q0.60053492,12.240029,0.52610332,12.032007Q0.45167172,11.823986,0.38753694,11.612562Q0.32340217,11.401138,0.26971871,11.186821Q0.21603525,10.972504,0.17293245,10.755812Q0.12982966,10.53912,0.097411394,10.320574Q0.064993128,10.102028,0.043337457,9.8821545Q0.021681786,9.662281,0.010840893,9.4416094Q0,9.2209377,0,9Q0,8.7790623,0.010840893,8.5583916Q0.021681786,8.337719,0.043337457,8.1178455Q0.064993128,7.8979716,0.097411394,7.6794257Q0.12982966,7.4608793,0.17293245,7.2441869Q0.21603525,7.0274944,0.26971871,6.8131781Q0.32340217,6.5988617,0.38753694,6.3874383Q0.45167172,6.1760139,0.52610338,5.9679914Q0.60053492,5.7599688,0.6850841,5.5558491Q0.76963323,5.3517294,0.86409622,5.1520038Q0.95855927,4.9522791,1.0627086,4.7574296Q1.1668578,4.5625796,1.2804425,4.373075Q1.394027,4.1835704,1.5167733,3.9998674Q1.6395197,3.8161645,1.771132,3.638706Q1.9027444,3.4612472,2.0429058,3.2904601Q2.1830671,3.1196733,2.3314397,2.9559693Q2.4798124,2.7922654,2.6360388,2.6360388Q2.7922654,2.4798124,2.9559693,2.3314397Q3.1196733,2.1830673,3.2904601,2.042906Q3.4612472,1.9027445,3.6387057,1.7711321Q3.8161645,1.6395197,3.9998674,1.5167732Q4.1835699,1.394027,4.3730745,1.2804424Q4.5625792,1.1668577,4.7574291,1.0627085Q4.9522781,0.95855922,5.1520033,0.86409616Q5.3517284,0.76963323,5.5558486,0.6850841Q5.7599683,0.60053492,5.9679909,0.52610332Q6.1760139,0.45167172,6.3874383,0.38753694Q6.5988617,0.32340217,6.8131781,0.26971871Q7.0274944,0.21603525,7.2441869,0.17293245Q7.4608793,0.12982966,7.6794257,0.097411394Q7.8979721,0.064993128,8.1178465,0.043337457Q8.3377199,0.021681786,8.5583916,0.010840893Q8.7790623,0,9,0Q9.2209377,0,9.4416094,0.010840893Q9.662281,0.021681786,9.8821554,0.043337457Q10.102028,0.064993128,10.320575,0.097411394Q10.53912,0.12982966,10.755813,0.17293245Q10.972505,0.21603525,11.186821,0.26971871Q11.401138,0.32340217,11.612562,0.38753694Q11.823986,0.45167172,12.032008,0.52610338Q12.24003,0.60053492,12.44415,0.6850841Q12.64827,0.76963323,12.847996,0.86409622Q13.047721,0.95855927,13.242571,1.0627086Q13.43742,1.1668578,13.626925,1.2804425Q13.816429,1.394027,14.000132,1.5167733Q14.183834,1.6395197,14.361293,1.771132Q14.538752,1.9027444,14.709539,2.0429058Q14.880326,2.1830671,15.04403,2.3314397Q15.207733,2.4798124,15.36396,2.6360388Q15.520185,2.7922654,15.668559,2.9559693Q15.816931,3.1196733,15.957093,3.2904601Q16.097254,3.4612472,16.228867,3.6387057Q16.360477,3.8161645,16.483225,3.9998674Q16.605972,4.1835699,16.719555,4.3730745Q16.833141,4.5625792,16.93729,4.7574291Q17.041439,4.9522781,17.1359,5.1520033Q17.230364,5.3517284,17.314915,5.5558486Q17.399464,5.7599683,17.473896,5.9679909Q17.548328,6.1760139,17.612463,6.3874383Q17.676598,6.5988617,17.730282,6.8131781Q17.783964,7.0274944,17.827068,7.2441869Q17.870171,7.4608793,17.902588,7.6794257Q17.935007,7.8979721,17.956663,8.1178465Q17.978317,8.3377199,17.989159,8.5583916Q18,8.7790623,18,9ZM16,9Q16,8.8281593,15.991568,8.6565266Q15.983136,8.4848938,15.966293,8.3138809Q15.94945,8.1428671,15.924235,7.9728866Q15.899021,7.802906,15.865496,7.634367Q15.83197,7.4658284,15.790217,7.2991381Q15.748464,7.1324477,15.698582,6.9680071Q15.648699,6.803566,15.590807,6.6417704Q15.532915,6.4799747,15.467155,6.3212152Q15.401394,6.1624556,15.327925,6.0071135Q15.254454,5.8517723,15.173449,5.700223Q15.092443,5.5486732,15.004099,5.4012809Q14.915755,5.2538881,14.820286,5.1110082Q14.724816,4.9681282,14.622452,4.8301048Q14.520086,4.6920815,14.411072,4.559247Q14.302057,4.4264126,14.186657,4.2990875Q14.071255,4.171762,13.949746,4.0502524Q13.828236,3.9287429,13.700912,3.8133421Q13.573586,3.6979408,13.440752,3.5889266Q13.307917,3.4799123,13.169893,3.377547Q13.03187,3.2751818,12.888989,3.1797123Q12.746109,3.0842428,12.598717,2.9958992Q12.451325,2.9075558,12.299776,2.826551Q12.148226,2.7455459,11.992885,2.6720748Q11.837543,2.5986037,11.678782,2.5328431Q11.520023,2.4670827,11.358228,2.4091916Q11.196433,2.3513002,11.031992,2.3014178Q10.86755,2.2515352,10.700859,2.2097812Q10.534169,2.1680274,10.365631,2.1345029Q10.197094,2.1009784,10.027113,2.0757642Q9.8571329,2.0505502,9.68612,2.0337071Q9.5151072,2.0168636,9.3434744,2.0084319Q9.1718407,2,9,2Q8.8281593,2,8.6565266,2.0084319Q8.4848938,2.0168636,8.3138809,2.0337071Q8.1428671,2.0505502,7.9728866,2.0757644Q7.802906,2.1009784,7.634367,2.1345029Q7.4658284,2.1680274,7.2991381,2.2097814Q7.1324477,2.2515352,6.9680071,2.3014178Q6.803566,2.3513002,6.6417704,2.4091916Q6.4799747,2.4670827,6.3212152,2.5328431Q6.1624556,2.5986037,6.0071135,2.6720748Q5.8517723,2.7455461,5.700223,2.8265512Q5.5486732,2.9075561,5.4012809,2.9958994Q5.2538881,3.0842428,5.1110082,3.1797123Q4.9681282,3.2751818,4.8301048,3.3775468Q4.6920815,3.479912,4.559247,3.5889266Q4.4264126,3.6979408,4.2990875,3.8133416Q4.171762,3.9287424,4.0502524,4.050252Q3.9287429,4.1717615,3.8133421,4.299087Q3.6979408,4.4264121,3.5889266,4.5592465Q3.4799123,4.6920805,3.377547,4.8301044Q3.2751818,4.9681273,3.1797123,5.1110077Q3.0842428,5.2538877,2.9958992,5.4012799Q2.9075558,5.5486727,2.826551,5.7002225Q2.7455459,5.8517723,2.6720748,6.0071135Q2.5986037,6.1624556,2.5328431,6.3212156Q2.4670825,6.4799752,2.4091914,6.6417704Q2.3513002,6.803566,2.3014176,6.9680071Q2.2515349,7.1324482,2.2097812,7.2991385Q2.1680274,7.4658289,2.1345029,7.6343675Q2.1009784,7.802906,2.0757642,7.9728866Q2.0505502,8.1428671,2.0337071,8.31388Q2.0168636,8.4848928,2.0084319,8.6565266Q2,8.8281593,2,9Q2,9.1718407,2.0084319,9.3434734Q2.0168636,9.5151072,2.0337071,9.68612Q2.0505502,9.8571329,2.0757644,10.027113Q2.1009784,10.197094,2.1345029,10.365631Q2.1680274,10.534169,2.2097812,10.70086Q2.2515349,10.86755,2.3014176,11.031992Q2.3513,11.196433,2.4091911,11.358229Q2.4670825,11.520023,2.5328429,11.678782Q2.5986032,11.837543,2.6720748,11.992884Q2.7455459,12.148226,2.826551,12.299776Q2.9075556,12.451325,2.9958992,12.598719Q3.0842428,12.74611,3.1797121,12.88899Q3.2751815,13.03187,3.3775468,13.169893Q3.4799118,13.307917,3.5889263,13.440752Q3.6979406,13.573586,3.8133416,13.700912Q3.9287424,13.828237,4.050252,13.949747Q4.1717615,14.071257,4.299087,14.186658Q4.4264121,14.302059,4.5592465,14.411074Q4.6920805,14.520086,4.8301044,14.622452Q4.9681273,14.724816,5.1110077,14.820286Q5.2538877,14.915755,5.4012799,15.004099Q5.5486727,15.092443,5.7002225,15.173449Q5.8517723,15.254454,6.0071135,15.327924Q6.1624556,15.401395,6.3212156,15.467155Q6.4799752,15.532916,6.6417704,15.590808Q6.803566,15.648699,6.9680071,15.698582Q7.1324482,15.748465,7.2991385,15.790217Q7.4658289,15.831971,7.6343675,15.865496Q7.802906,15.899021,7.9728866,15.924235Q8.1428671,15.94945,8.31388,15.966293Q8.4848928,15.983136,8.6565266,15.991568Q8.8281593,16,9,16Q9.1718407,16,9.3434734,15.991568Q9.5151072,15.983136,9.68612,15.966293Q9.8571329,15.94945,10.027113,15.924235Q10.197094,15.899021,10.365631,15.865496Q10.534169,15.83197,10.70086,15.790217Q10.86755,15.748464,11.031992,15.698582Q11.196433,15.648699,11.358229,15.590807Q11.520023,15.532915,11.678782,15.467155Q11.837543,15.401394,11.992884,15.327925Q12.148226,15.254454,12.299776,15.173449Q12.451325,15.092443,12.598719,15.004099Q12.74611,14.915755,12.88899,14.820286Q13.03187,14.724816,13.169893,14.622452Q13.307917,14.520086,13.440752,14.411072Q13.573586,14.302057,13.700912,14.186657Q13.828237,14.071255,13.949747,13.949746Q14.071257,13.828236,14.186658,13.700912Q14.302059,13.573586,14.411074,13.440752Q14.520086,13.307917,14.622452,13.169893Q14.724816,13.03187,14.820286,12.888989Q14.915755,12.746109,15.004099,12.598717Q15.092443,12.451325,15.173449,12.299776Q15.254454,12.148226,15.327924,11.992885Q15.401395,11.837543,15.467155,11.678782Q15.532916,11.520023,15.590808,11.358228Q15.648699,11.196433,15.698582,11.031992Q15.748465,10.86755,15.790217,10.700859Q15.831971,10.534169,15.865496,10.365631Q15.899021,10.197094,15.924235,10.027113Q15.94945,9.8571329,15.966293,9.68612Q15.983136,9.5151072,15.991568,9.3434744Q16,9.1718407,16,9Z"
+              fill="#11193C"
+              fill-opacity="1" />
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 972px; top: 498px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_578">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_578)">
+            <g>
+              <path
+                d="M8.199886334375,1.66668701171875C6.533219834375,1.66668701171875,4.933219934375,2.33335364171875,3.733219634375,3.40002051171875L3.599886434375,2.3333538817187502C3.599886434375,1.93335390171875,3.2665530343749998,1.66668713092804,2.866552934375,1.73335385371875C2.4665528343750003,1.73335385371875,2.199886204375,2.06668722171875,2.266552804375,2.46668708171875L2.3998860143750003,4.26668691171875C2.466552614375,5.13335371171875,3.1998859343749997,5.80002021171875,4.066552634375,5.80002021171875L4.199885834374999,5.80002021171875L5.999886534375,5.66668701171875C6.399886634375,5.66668701171875,6.666553034375,5.33335351171875,6.599886434375,4.933353911718751C6.599886434375,4.53335381171875,6.266552934375,4.26668741171875,5.866553334375,4.33335401171875L4.533219834375,4.40002061171875C5.533219834375,3.5333537117187497,6.799886734375,3.00002041171875,8.133219734375,3.00002041171875C11.066553134375,3.00002041171875,13.466553734375,5.40002061171875,13.466553734375,8.333354511718749C13.466553734375,11.26668831171875,11.066554034375,13.66668801171875,8.133219734375,13.66668801171875C5.199885334375,13.66668801171875,2.799886134375,11.26668831171875,2.799886134375,8.333354511718749C2.799886134375,7.93335441171875,2.533219434375,7.66668801171875,2.133219364375,7.66668801171875C1.733219264375,7.66668801171875,1.46655261516571,7.93335481171875,1.466552734375,8.333354511718749C1.466552734375,12.00002101171875,4.466552734375,15.00002001171875,8.133219734375,15.00002001171875C11.799886734375,15.00002001171875,14.799885734375,12.00002001171875,14.799885734375,8.333354511718749C14.866552734375,4.6666875117187505,11.866552734375,1.66668784618378,8.199886334375,1.66668701171875Z"
+                fill="#221E1F"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="position: absolute; left: 1334px; top: 498px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="none"
+          version="1.1"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16">
+          <defs>
+            <clipPath id="master_svg0_3_0624">
+              <rect x="0" y="0" width="16" height="16" rx="0" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#master_svg0_3_0624)">
+            <g>
+              <path
+                d="M8.199886334375,1.66668701171875C6.533219834375,1.66668701171875,4.933219934375,2.33335364171875,3.733219634375,3.40002051171875L3.599886434375,2.3333538817187502C3.599886434375,1.93335390171875,3.2665530343749998,1.66668713092804,2.866552934375,1.73335385371875C2.4665528343750003,1.73335385371875,2.199886204375,2.06668722171875,2.266552804375,2.46668708171875L2.3998860143750003,4.26668691171875C2.466552614375,5.13335371171875,3.1998859343749997,5.80002021171875,4.066552634375,5.80002021171875L4.199885834374999,5.80002021171875L5.999886534375,5.66668701171875C6.399886634375,5.66668701171875,6.666553034375,5.33335351171875,6.599886434375,4.933353911718751C6.599886434375,4.53335381171875,6.266552934375,4.26668741171875,5.866553334375,4.33335401171875L4.533219834375,4.40002061171875C5.533219834375,3.5333537117187497,6.799886734375,3.00002041171875,8.133219734375,3.00002041171875C11.066553134375,3.00002041171875,13.466553734375,5.40002061171875,13.466553734375,8.333354511718749C13.466553734375,11.26668831171875,11.066554034375,13.66668801171875,8.133219734375,13.66668801171875C5.199885334375,13.66668801171875,2.799886134375,11.26668831171875,2.799886134375,8.333354511718749C2.799886134375,7.93335441171875,2.533219434375,7.66668801171875,2.133219364375,7.66668801171875C1.733219264375,7.66668801171875,1.46655261516571,7.93335481171875,1.466552734375,8.333354511718749C1.466552734375,12.00002101171875,4.466552734375,15.00002001171875,8.133219734375,15.00002001171875C11.799886734375,15.00002001171875,14.799885734375,12.00002001171875,14.799885734375,8.333354511718749C14.866552734375,4.6666875117187505,11.866552734375,1.66668784618378,8.199886334375,1.66668701171875Z"
+                fill="#221E1F"
+                fill-opacity="1"
+                style="mix-blend-mode:passthrough" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        style="width: 20px; height: 20px; flex: none; position: absolute; left: 1589px; top: 488px">
+        <div
+          style="width: 20px; height: 20px; flex: none; background: #11193C; border-radius: 2px; position: absolute; left: 0px; top: 0px"></div>
+        <div style="position: absolute; left: 2px; top: 2px">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            fill="none"
+            version="1.1"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16">
+            <defs>
+              <clipPath id="master_svg0_3_582">
+                <rect x="0" y="0" width="16" height="16" rx="0" />
+              </clipPath>
+            </defs>
+            <g clip-path="url(#master_svg0_3_582)">
+              <g>
+                <path
+                  d="M15.150048828125,3.25001239703125C15.000049828125,3.10001230203125,14.750049828125,3.10001230203125,14.600048828125,3.25001239703125L6.650048728125,11.65001200703125C6.350048528125,11.95001220703125,5.900048728125,11.95001220703125,5.550048828125,11.70001220703125L1.400048848125,7.75001240703125C1.2500488781249999,7.60001230703125,1.0000488781249999,7.60001230703125,0.850048838125,7.75001240703125C0.700048804125,7.90001250703125,0.700048804125,8.15001200703125,0.850048838125,8.300012607031249L5.000048628125,12.25001240703125C5.600048528125,12.85001280703125,6.600048528125,12.80001260703125,7.150048728125,12.20001220703125L15.100048828125,3.80001258703125C15.300049828125,3.65001249703125,15.300049828125,3.40001249703125,15.150048828125,3.25001239703125Z"
+                  fill="#FFFFFF"
+                  fill-opacity="1"
+                  style="mix-blend-mode:passthrough" />
+                <path
+                  d="M15.438389828125,4.16991450703125Q15.732057828125,3.92849951703125,15.755325828125,3.55620196703125Q15.779327828125,3.17218326003125,15.503601828125,2.89645844703125Q15.244656828125,2.63751229703125,14.875049828125,2.63751229703125Q14.505443828125,2.63751229703125,14.246495828125,2.89645845703125L14.241631828125,2.90132319703125L6.292539628125,11.30036450703125Q6.114742728125,11.47362230703125,5.866169428125,11.31061930703125L1.748497728125,7.39139030703125Q1.4910204981250001,7.13751270703125,1.1250488781249999,7.13751270703125Q0.755442038125,7.13751270703125,0.496495498125,7.39645910703125Q0.23754876812500003,7.65540600703125,0.23754876812500003,8.02501250703125Q0.23754876812500003,8.39461850703125,0.496494828125,8.65356540703125L0.5008593381249999,8.65793040703125L4.651135728125,12.60819340703125Q5.248483228125,13.20210020703125,6.109663928125,13.17476120703125Q6.959545628125,13.14778020703125,7.518625728125,12.53787420703125L15.438389828125,4.16991450703125Z"
+                  fill-rule="evenodd"
+                  fill="#FFFFFF"
+                  fill-opacity="1" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div
+        style="width: 20px; height: 20px; flex: none; position: absolute; left: 1532px; top: 788px">
+        <div
+          style="width: 20px; height: 20px; flex: none; background: #11193C; border-radius: 2px; position: absolute; left: 0px; top: 0px"></div>
+        <div style="position: absolute; left: 2px; top: 2px">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            fill="none"
+            version="1.1"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16">
+            <defs>
+              <clipPath id="master_svg0_3_1118">
+                <rect x="0" y="0" width="16" height="16" rx="0" />
+              </clipPath>
+            </defs>
+            <g clip-path="url(#master_svg0_3_1118)">
+              <g>
+                <path
+                  d="M15.150048828125,3.25001239703125C15.000049828125,3.10001230203125,14.750049828125,3.10001230203125,14.600048828125,3.25001239703125L6.650048728125,11.65001200703125C6.350048528125,11.95001220703125,5.900048728125,11.95001220703125,5.550048828125,11.70001220703125L1.400048848125,7.75001240703125C1.2500488781249999,7.60001230703125,1.0000488781249999,7.60001230703125,0.850048838125,7.75001240703125C0.700048804125,7.90001250703125,0.700048804125,8.15001200703125,0.850048838125,8.300012607031249L5.000048628125,12.25001240703125C5.600048528125,12.85001280703125,6.600048528125,12.80001260703125,7.150048728125,12.20001220703125L15.100048828125,3.80001258703125C15.300049828125,3.65001249703125,15.300049828125,3.40001249703125,15.150048828125,3.25001239703125Z"
+                  fill="#FFFFFF"
+                  fill-opacity="1"
+                  style="mix-blend-mode:passthrough" />
+                <path
+                  d="M15.438389828125,4.16991450703125Q15.732057828125,3.92849951703125,15.755325828125,3.55620196703125Q15.779327828125,3.17218326003125,15.503601828125,2.89645844703125Q15.244656828125,2.63751229703125,14.875049828125,2.63751229703125Q14.505443828125,2.63751229703125,14.246495828125,2.89645845703125L14.241631828125,2.90132319703125L6.292539628125,11.30036450703125Q6.114742728125,11.47362230703125,5.866169428125,11.31061930703125L1.748497728125,7.39139030703125Q1.4910204981250001,7.13751270703125,1.1250488781249999,7.13751270703125Q0.755442038125,7.13751270703125,0.496495498125,7.39645910703125Q0.23754876812500003,7.65540600703125,0.23754876812500003,8.02501250703125Q0.23754876812500003,8.39461850703125,0.496494828125,8.65356540703125L0.5008593381249999,8.65793040703125L4.651135728125,12.60819340703125Q5.248483228125,13.20210020703125,6.109663928125,13.17476120703125Q6.959545628125,13.14778020703125,7.518625728125,12.53787420703125L15.438389828125,4.16991450703125Z"
+                  fill-rule="evenodd"
+                  fill="#FFFFFF"
+                  fill-opacity="1" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <img
+        src="https://image-resource.mastergo.com/91083880877493/91083880877495/693d4d74bc84ac96db6b443a46375cc4.png"
+        title="image"
+        style="flex: none; position: absolute; left: 0px; top: 1048px; width: 1920px; height: 32px; object-fit: cover" />
+    </div>
+  </body>
+</html>

@@ -120,7 +120,7 @@ class Optimizer(BaseUI):
 
     @classmethod
     def do_build_ui(cls, base_tab: Type['BaseUI']):
-        with gr.Accordion(elem_id='optimizer_params', open=False):
+        with gr.Accordion(elem_id='optimizer_params', open=True):
             with gr.Tabs():
                 with gr.TabItem(elem_id='galore_tab'):
                     with gr.Row():

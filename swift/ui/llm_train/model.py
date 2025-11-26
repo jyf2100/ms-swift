@@ -102,7 +102,8 @@ class Model(BaseUI):
                 gr.Dropdown(elem_id='model_type', choices=ModelType.get_model_name_list(), scale=20)
                 gr.Dropdown(elem_id='template', choices=list(TEMPLATE_MAPPING.keys()), scale=20)
                 train_record = gr.Dropdown(elem_id='train_record', choices=[], scale=20)
-                clear_cache = gr.Button(elem_id='clear_cache', scale=2)
+                with gr.Column(elem_id='clear_cache_wrap'):
+                    clear_cache = gr.Button(elem_id='clear_cache', scale=2)
             with gr.Row():
                 gr.Textbox(elem_id='system', lines=4 if cls.group == 'llm_grpo' else 1, scale=20)
 

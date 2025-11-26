@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LLM Training Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    @layer base {
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        @apply bg-gray-50 dark:bg-gray-800;
+      }
+      ::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 dark:bg-gray-600 rounded;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400 dark:bg-gray-500;
+      }
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3b82f6", // blue-500
+            "background-light": "#f9fafb", // gray-50
+            "background-dark": "#111827", // gray-900
+            "sidebar-light": "#ffffff",
+            "sidebar-dark": "#1f2937", // gray-800
+            "surface-light": "#ffffff",
+            "surface-dark": "#1f2937",
+          },
+          fontFamily: {
+            display: ["Noto Sans SC", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem", // 8px
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 antialiased">
+<div class="flex h-screen">
+<aside class="w-64 flex-shrink-0 bg-sidebar-light dark:bg-sidebar-dark p-4 flex flex-col border-r border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="bg-primary p-2 rounded-lg">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 11c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7H5c-2.761 0-5-2.239-5-5s2.239-5 5-5h7zM12 11V4M19 4l-2 2M5 11l-2-2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xl font-bold text-gray-800 dark:text-gray-200">训练推理平台</span>
+</div>
+<nav class="flex flex-col space-y-2">
+<div>
+<button class="w-full flex justify-between items-center text-left text-sm font-semibold py-2.5 px-3 rounded-lg text-primary bg-blue-50 dark:bg-blue-900/50">
+<span>模型训练</span>
+<span class="material-symbols-outlined text-base transform transition-transform">expand_less</span>
+</button>
+<div class="mt-2 space-y-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-3">
+<a class="flex items-center text-primary font-medium py-2 px-3 rounded-lg bg-blue-100 dark:bg-blue-900 text-sm" href="#">
+<span class="w-1.5 h-1.5 bg-primary rounded-full mr-3"></span>
+                        LLM预训练/微调
+                    </a>
+<a class="flex items-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 py-2 px-3 rounded-lg transition-colors text-sm" href="#">
+<span class="w-1.5 h-1.5 bg-transparent rounded-full mr-3"></span>
+                        LLM人类对齐
+                    </a>
+<a class="flex items-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 py-2 px-3 rounded-lg transition-colors text-sm" href="#">
+<span class="w-1.5 h-1.5 bg-transparent rounded-full mr-3"></span>
+                        LLM GRPO
+                    </a>
+</div>
+</div>
+<div class="pt-2">
+<div class="border-t border-gray-200 dark:border-gray-600 mx-2 mb-4"></div>
+<button class="w-full flex justify-between items-center text-left text-gray-500 dark:text-gray-400 font-semibold py-2.5 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 text-sm hover:text-gray-800 dark:hover:text-gray-200">
+<span>模型服务</span>
+<span class="material-symbols-outlined text-base transform transition-transform">expand_more</span>
+</button>
+</div>
+<div>
+<button class="w-full flex justify-between items-center text-left text-gray-500 dark:text-gray-400 font-semibold py-2.5 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 text-sm hover:text-gray-800 dark:hover:text-gray-200">
+<span>评测与演示</span>
+<span class="material-symbols-outlined text-base transform transition-transform">expand_more</span>
+</button>
+</div>
+</nav>
+</aside>
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto space-y-6">
+<header class="mb-8">
+<h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200">LLM 训练/微调设置</h1>
+<p class="text-gray-500 dark:text-gray-400 mt-2">配置您的LLM模型、数据集和训练参数。</p>
+</header>
+<section class="border border-gray-200 dark:border-gray-700 rounded-lg bg-surface-light dark:bg-surface-dark">
+<div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+<h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">模型设置</h2>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+<span class="material-icons">expand_less</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">模型id或路径(--model)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">实际的模型id</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option>Qwen/Qwen2.5-7B-Instruct</option>
+<option>Model 2</option>
+</select>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">模型类型(--model_type)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">SWIFT已支持的模型类型</p>
+<input class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="text" value="qwen2_5"/>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">模型Prompt模板类型(--template)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择匹配模型的Prompt模板</p>
+<input class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="text" value="qwen2_5"/>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">训练记录</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">展示使用web-ui的历史训练及参数</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option disabled="" selected=""></option>
+<option>Record 1</option>
+</select>
+</div>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">System字段(--system)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择system字段的内容</p>
+<input class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="text" value="You are Qwen, created by Alibaba Cloud. You are a helpful assistant."/>
+</div>
+<div class="flex justify-end">
+<button class="bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors">删除训练记录</button>
+</div>
+</div>
+</section>
+<section class="border border-gray-200 dark:border-gray-700 rounded-lg bg-surface-light dark:bg-surface-dark">
+<div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+<h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">数据设置</h2>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+<span class="material-icons">expand_less</span>
+</button>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg col-span-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">数据集名称(--dataset)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择训练的数据集, 支持复选/本地路径</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option disabled="" selected=""></option>
+<option>Dataset A</option>
+</select>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg col-span-1">
+<div class="flex justify-between items-center">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">验证集拆分比例(--split_dataset_ratio)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400">表示将总数据的多少拆分到验证集中</p>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-16 text-center bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="number" value="0"/>
+<button class="p-1 rounded-md border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-icons text-sm">refresh</span>
+</button>
+</div>
+</div>
+<div class="mt-3">
+<input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 [&amp;::-webkit-slider-thumb]:bg-primary" max="1" min="0" step="0.01" type="range" value="0"/>
+<div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+<span>0</span>
+<span>1</span>
+</div>
+</div>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg col-span-1">
+<div class="flex justify-between items-center">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">句子最大长度(--max_length)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400">设置输入模型的最大长度</p>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-20 text-center bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="number" value="1024"/>
+<button class="p-1 rounded-md border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-icons text-sm">refresh</span>
+</button>
+</div>
+</div>
+<div class="mt-3">
+<input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 [&amp;::-webkit-slider-thumb]:bg-primary" max="32768" min="32" type="range" value="1024"/>
+<div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+<span>32</span>
+<span>32768</span>
+</div>
+</div>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg col-span-1">
+<div class="flex items-center h-full">
+<div class="flex items-start">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-900 dark:ring-offset-gray-800" id="padding_free" type="checkbox"/>
+<div class="ml-3 text-sm">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="padding_free">无填充批处理(--padding_free)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400">将一个batch中的数据进行展平而避免数据padding</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="border border-gray-200 dark:border-gray-700 rounded-lg bg-surface-light dark:bg-surface-dark">
+<div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+<h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">训练参数设置</h2>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+<span class="material-icons">expand_less</span>
+</button>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">训练Stage</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">请注意选择与此匹配的数据集</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option>sft</option>
+</select>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">训练方式(--train_type)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择训练的方式</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option>lora</option>
+</select>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">随机数种子(--seed)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择随机数种子</p>
+<input class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary" type="number" value="42"/>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300">训练精度(--torch_dtype)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">选择训练精度</p>
+<select class="w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md focus:ring-primary focus:border-primary">
+<option>bfloat16</option>
+</select>
+</div>
+<div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+<div class="flex items-center h-full">
+<div class="flex items-start">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-900 dark:ring-offset-gray-800" id="liger_kernel" type="checkbox"/>
+<div class="ml-3 text-sm">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="liger_kernel">使用Liger kernel(--use_liger_kernel)</label>
+<p class="text-xs text-gray-500 dark:text-gray-400">Liger kernel可以有效降低显存使用</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>
