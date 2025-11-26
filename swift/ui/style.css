@@ -279,6 +279,16 @@ button {
     background-color: rgba(255,255,255,0.9) !important;
 }
 
+/* Ensure Gradio/Svelte button class also uses fixed background */
+button.svelte-o34uqh,
+.svelte-o34uqh.lg,
+.svelte-o34uqh.primary,
+.svelte-o34uqh.secondary {
+    background-color: rgba(255,255,255,0.9) !important;
+    color: inherit !important;
+    border: none !important;
+}
+
 /* Sidebar styles */
 .sidebar {
     width: 200px;
